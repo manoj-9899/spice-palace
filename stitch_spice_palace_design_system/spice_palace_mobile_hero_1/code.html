@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Spice Palace | Authentic Indian Cuisine</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#2f1500",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#2d4a3e",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#584400",
+                        "surface-bright": "#fcf9f8",
+                        "secondary": "#914c00",
+                        "surface-container": "#f0eded",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#fcf9f8",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#ffb77e",
+                        "on-secondary-container": "#663400",
+                        "surface-variant": "#e5e2e1",
+                        "tertiary": "#755b00",
+                        "surface-container-high": "#eae7e7",
+                        "on-tertiary-fixed": "#241a00",
+                        "surface-container-low": "#f6f3f2",
+                        "tertiary-fixed": "#ffe08f",
+                        "on-primary-fixed-variant": "#304d40",
+                        "secondary-container": "#fe932d",
+                        "primary-fixed-dim": "#adcebe",
+                        "on-secondary-fixed-variant": "#6e3900",
+                        "inverse-primary": "#adcebe",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#ffdcc3",
+                        "surface-tint": "#476558",
+                        "primary-fixed": "#c9ead9",
+                        "on-surface-variant": "#424844",
+                        "on-primary-fixed": "#022016",
+                        "tertiary-container": "#d0a61f",
+                        "primary": "#163328",
+                        "on-surface": "#1b1b1b",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-background": "#1b1b1b",
+                        "tertiary-fixed-dim": "#eec13c",
+                        "surface-dim": "#dcd9d9",
+                        "outline-variant": "#c1c8c3",
+                        "surface-container-highest": "#e5e2e1",
+                        "outline": "#727974",
+                        "on-tertiary-container": "#503d00",
+                        "on-primary-container": "#99b9a9",
+                        "inverse-surface": "#313030",
+                        "background": "#fcf9f8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1200px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "unit": "8px",
+                        "stack-sm": "8px",
+                        "section-gap": "80px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "48px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-lg": ["DM Sans"],
+                        "headline-lg": ["Playfair Display"],
+                        "label-md": ["DM Sans"],
+                        "label-sm": ["DM Sans"],
+                        "headline-md": ["Playfair Display"],
+                        "body-md": ["DM Sans"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(245, 239, 224, 1) 0%, rgba(252, 249, 248, 1) 100%);
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased overflow-x-hidden">
+<!-- Mobile Top Navigation Bar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md shadow-sm h-16 px-margin-mobile flex justify-between items-center border-b border-surface-variant/20 md:hidden">
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight">Spice Palace</h1>
+<button aria-label="Open Menu" class="p-2 text-primary active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-size: 32px;">menu</span>
+</button>
+</header>
+<!-- Desktop Navigation (Hidden on Mobile as per request) -->
+<header class="hidden md:flex fixed top-0 w-full h-20 bg-surface z-50 shadow-[0px_10px_30px_rgba(45,74,62,0.08)] items-center justify-between px-margin-desktop">
+<div class="font-headline-md text-headline-md text-primary">Spice Palace</div>
+<nav class="flex gap-8">
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="#">Menu</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">About</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Our Chef</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a>
+</nav>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-full font-label-md transition-all active:scale-95">Order Online</button>
+</header>
+<!-- Main Hero Section -->
+<main class="pt-16 md:pt-20">
+<section class="hero-gradient px-margin-mobile pt-stack-lg pb-section-gap flex flex-col items-center">
+<!-- Badge -->
+<div class="mb-stack-md flex items-center gap-2 px-4 py-1 rounded-full border border-primary/20 bg-primary/5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest italic">Authentic Indian Cuisine</span>
+</div>
+<!-- Headline Group -->
+<div class="text-center space-y-stack-md mb-stack-lg">
+<h2 class="font-display-lg-mobile text-display-lg-mobile text-primary max-w-[10ch] mx-auto leading-[1.1]">
+                    Authentic Indian Cuisine Crafted Fresh Every Day
+                </h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[320px] mx-auto opacity-90">
+                    Experience the timeless flavors of North India, meticulously prepared with heritage recipes and premium spices in the heart of Pune.
+                </p>
+</div>
+<!-- Hero Image Visual -->
+<div class="relative w-full aspect-square max-w-[320px] mb-stack-lg">
+<div class="absolute inset-0 bg-secondary/10 rounded-full scale-110 blur-2xl"></div>
+<!-- Circular Image Container -->
+<div class="relative w-full h-full rounded-full overflow-hidden border-[8px] border-surface shadow-2xl z-10">
+<img alt="Dal Makhani" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLurKl8OjWtgzwfwinxVJ9ow6muGAva8iGH_SHIyJ45q9XICRuwExve8_tUGvhDHu0RJWZEzHee1iMOKcOi5o5KFlT0-Fu_UiwYDpzhgCcdUhiFVB4JZomhiNKrj0jtGCEG4QXhvoON90CvVSsF8N8UDjT0ru0KmxNNGBGzgS1W6PmjanIXcE4bPBzYGNVSkx0ZrQkg_Ugr7mGIqVKcXPMX6GumStstupIgGc8UuMzfd2rd1c-WSCjfQ-rU"/>
+</div>
+<!-- Chef's Special Floating Card -->
+<div class="absolute -right-2 top-1/2 -translate-y-1/2 z-20 bg-surface px-4 py-3 rounded-xl shadow-[0px_10px_30px_rgba(45,74,62,0.12)] border border-surface-variant/30 flex items-center gap-3 animate-float">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-container" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+</div>
+<div>
+<div class="font-label-sm text-[10px] text-secondary uppercase tracking-tighter">Must Try</div>
+<div class="font-label-md text-primary font-bold">Chef's Special</div>
+</div>
+</div>
+<!-- Spice Accent Element -->
+<div class="absolute -left-4 bottom-8 z-20 w-16 h-16 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shadow-lg border-2 border-surface rotate-[-15deg]">
+<span class="material-symbols-outlined" style="font-size: 32px;">star</span>
+</div>
+</div>
+<!-- Action Buttons Stacked -->
+<div class="w-full space-y-stack-md mb-stack-lg">
+<button class="w-full h-14 bg-primary text-on-primary rounded-full font-label-md flex items-center justify-center gap-2 shadow-md active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined">shopping_bag</span>
+                    Order Online
+                </button>
+<button class="w-full h-14 border-2 border-primary text-primary rounded-full font-label-md flex items-center justify-center gap-2 active:bg-primary/5 active:scale-[0.98] transition-all">
+                    View Menu
+                </button>
+<button class="w-full h-14 bg-[#25D366] text-white rounded-full font-label-md flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+                    Book a Table
+                </button>
+</div>
+<!-- Trust Badges Rows -->
+<div class="w-full space-y-stack-md">
+<!-- Row 1 -->
+<div class="flex justify-around items-center opacity-70">
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-primary">eco</span>
+<span class="font-label-sm text-[10px] uppercase">100% Organic Spices</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-primary">history_edu</span>
+<span class="font-label-sm text-[10px] uppercase">Heritage Recipes</span>
+</div>
+<div class="flex flex-col items-center gap-1">
+<span class="material-symbols-outlined text-primary">workspace_premium</span>
+<span class="font-label-sm text-[10px] uppercase">Top Rated Pune</span>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="flex justify-center gap-8 items-center opacity-70 border-t border-surface-variant/30 pt-stack-md">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-primary font-bold">4.9/5</span>
+<span class="font-label-sm text-on-surface-variant">(2k+ Reviews)</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary">verified</span>
+<span class="font-label-sm text-on-surface-variant">FSSAI Certified</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Menu Teaser (Added for UI context) -->
+<section class="bg-surface-container-low py-stack-lg px-margin-mobile">
+<div class="flex justify-between items-end mb-stack-lg">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">Chef's Recommendations</h3>
+<p class="font-body-md text-on-surface-variant">Popular this week</p>
+</div>
+<a class="text-secondary font-label-md underline underline-offset-4 decoration-secondary/30" href="#">See All</a>
+</div>
+<!-- Horizontal Scroll Menu Cards -->
+<div class="flex gap-stack-md overflow-x-auto pb-4 -mx-margin-mobile px-margin-mobile no-scrollbar">
+<!-- Item 1 -->
+<div class="min-w-[240px] bg-surface p-4 rounded-2xl shadow-sm border border-surface-variant/20">
+<img class="w-full aspect-[4/3] object-cover rounded-xl mb-3" data-alt="A beautifully plated portion of creamy Butter Chicken garnished with fresh cilantro and cream swirls, served in a traditional copper bowl on a dark rustic wooden table with soft warm side lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtpX6VB4J6QBPGZan2I0MhwvKUkO_Ocf09yQCtN-VE7mACmItU5k8DYd8JGPufcdYjTvNmCLqxF-LTS_AFJ9rFuZ2WVQcK6HKdJ--38QtjxXjJz1UhdiLNonva5gbmWCQZkC_3F37BbIBIUDzcZNUozJP5I5bUlXOhz1PGNSyxIUxh_EJnDW3rl7pW54pQXOcNcdP-jLIxTNIry5mFlr3PKiNiXY5axdftM1qSBphJ2NsHRAWAXvfHNRD_Nm5okGuUJRgjCbQxWlY"/>
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline-md text-[18px] leading-tight">Murgh Makhani</h4>
+<div class="border border-[#008000] p-[2px] w-4 h-4 flex items-center justify-center">
+<div class="bg-[#008000] rounded-full w-2 h-2"></div>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-secondary font-bold">₹450</span>
+<div class="flex gap-0.5">
+<span class="material-symbols-outlined text-[#FF5733] text-sm">local_fire_department</span>
+<span class="material-symbols-outlined text-[#FF5733] text-sm">local_fire_department</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="min-w-[240px] bg-surface p-4 rounded-2xl shadow-sm border border-surface-variant/20">
+<img class="w-full aspect-[4/3] object-cover rounded-xl mb-3" data-alt="Fragrant vegetable biryani in a deep ivory ceramic bowl, showcasing long-grain basmati rice mixed with vibrant saffron threads, peas, carrots, and fried onions. Soft morning light creates a fresh, premium dining atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuPSfwHbXLY2Sn38Ns-nXyeHL3O7qGAaxq1agVhC-iZqWG4OHWE6OYVe-THULsT9n1A2sHmVnba5G3RYFmwPYBN9d7b8rVcnwvUq6q7Fh-iuX5lxyr6I6cI6jdVxXcOeMATaXpIKwqotQ5RzQ0Hx25-Q4vrGIUQWcOOBF93-T8tDZ4strIStWzVQ-pt7TSbTIqy7aOArS9uXSqhXnQLljBtXYy69zP2mRm31pYXy59KNNNS8LWz9GS5KnvnCqzT-vd1NT_Jf6ATo0"/>
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline-md text-[18px] leading-tight">Nizami Biryani</h4>
+<div class="border border-[#008000] p-[2px] w-4 h-4 flex items-center justify-center">
+<div class="bg-[#008000] rounded-full w-2 h-2"></div>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-secondary font-bold">₹380</span>
+<div class="flex gap-0.5">
+<span class="material-symbols-outlined text-[#FF5733] text-sm">local_fire_department</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest py-stack-lg px-margin-mobile md:px-margin-desktop">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-stack-lg">
+<div class="text-center md:text-left">
+<div class="font-headline-md text-headline-md text-primary mb-2">Spice Palace</div>
+<p class="font-label-sm text-on-surface-variant">© 2024 Spice Palace. All rights reserved.</p>
+</div>
+<nav class="flex flex-wrap justify-center gap-6">
+<a class="font-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Sustainability</a>
+<a class="font-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Careers</a>
+</nav>
+</div>
+</footer>
+<!-- Interactive Layer: FAB for Quick Reservation (Suppressed on details, shown on hero) -->
+<div class="fixed bottom-6 right-6 z-40 md:hidden">
+<button class="w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</button>
+</div>
+<script>
+        // Simple micro-interaction for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('touchstart', function() {
+                this.classList.add('scale-95');
+            });
+            button.addEventListener('touchend', function() {
+                this.classList.remove('scale-95');
+            });
+        });
+    </script>
+</body></html>

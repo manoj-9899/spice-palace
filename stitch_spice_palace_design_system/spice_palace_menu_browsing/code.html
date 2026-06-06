@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Spice Palace - Mobile Menu</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#99b9a9",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f6f3f2",
+                    "on-primary-fixed": "#022016",
+                    "surface": "#FAF7F0",
+                    "on-tertiary-fixed-variant": "#584400",
+                    "outline": "#727974",
+                    "surface-container-highest": "#e5e2e1",
+                    "tertiary-container": "#d0a61f",
+                    "error": "#ba1a1a",
+                    "inverse-primary": "#adcebe",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#304d40",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#dcd9d9",
+                    "secondary": "#914c00",
+                    "inverse-surface": "#313030",
+                    "secondary-fixed-dim": "#ffb77e",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed-dim": "#eec13c",
+                    "secondary-fixed": "#ffdcc3",
+                    "primary-fixed-dim": "#adcebe",
+                    "on-tertiary-container": "#503d00",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-container": "#663400",
+                    "on-background": "#1b1b1b",
+                    "primary-fixed": "#c9ead9",
+                    "on-secondary-fixed-variant": "#6e3900",
+                    "tertiary": "#755b00",
+                    "on-secondary": "#ffffff",
+                    "on-surface": "#1b1b1b",
+                    "on-secondary-fixed": "#2f1500",
+                    "surface-container": "#f0eded",
+                    "on-tertiary-fixed": "#241a00",
+                    "inverse-on-surface": "#f3f0ef",
+                    "surface-tint": "#476558",
+                    "tertiary-fixed": "#ffe08f",
+                    "primary-container": "#2d4a3e",
+                    "surface-bright": "#fcf9f8",
+                    "primary": "#163328",
+                    "secondary-container": "#fe932d",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#e5e2e1",
+                    "surface-container-high": "#eae7e7",
+                    "on-surface-variant": "#424844",
+                    "outline-variant": "#c1c8c3",
+                    "background": "#FAF7F0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1200px",
+                    "unit": "8px",
+                    "margin-desktop": "48px",
+                    "section-gap": "80px",
+                    "margin-mobile": "16px",
+                    "stack-md": "16px",
+                    "stack-sm": "8px",
+                    "stack-lg": "32px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Playfair Display"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "body-md": ["DM Sans"],
+                    "label-sm": ["DM Sans"],
+                    "body-lg": ["DM Sans"],
+                    "label-md": ["DM Sans"],
+                    "display-lg": ["Playfair Display"],
+                    "headline-lg": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .active-category {
+            background-color: #163328;
+            color: #ffffff;
+        }
+        .tonal-card {
+            background-color: #F5EFE0;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body-md text-on-surface antialiased pb-32">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface shadow-[0px_10px_30px_rgba(45,74,62,0.08)]">
+<div class="flex justify-between items-center h-20 px-margin-mobile max-w-container-max mx-auto">
+<span class="font-headline-md text-headline-md text-primary">Spice Palace</span>
+<div class="flex items-center gap-4">
+<button class="p-2 text-primary">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<div class="relative">
+<span class="material-symbols-outlined text-primary" data-icon="shopping_bag">shopping_bag</span>
+<span class="absolute -top-1 -right-1 bg-secondary text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full">3</span>
+</div>
+</div>
+</div>
+<!-- Horizontal Scroll Category Tabs -->
+<div class="px-margin-mobile pb-4 overflow-x-auto hide-scrollbar flex gap-3 whitespace-nowrap border-b border-outline-variant/30">
+<button class="active-category px-4 py-2 rounded-full border border-primary font-label-md text-label-md transition-all">
+                Curries <span class="opacity-70 ml-1 text-xs">(6)</span>
+</button>
+<button class="px-4 py-2 rounded-full border border-outline text-on-surface-variant font-label-md text-label-md transition-all hover:border-primary">
+                Starters <span class="opacity-70 ml-1 text-xs">(6)</span>
+</button>
+<button class="px-4 py-2 rounded-full border border-outline text-on-surface-variant font-label-md text-label-md transition-all hover:border-primary">
+                Breads <span class="opacity-70 ml-1 text-xs">(6)</span>
+</button>
+<button class="px-4 py-2 rounded-full border border-outline text-on-surface-variant font-label-md text-label-md transition-all hover:border-primary">
+                Biryani <span class="opacity-70 ml-1 text-xs">(6)</span>
+</button>
+<button class="px-4 py-2 rounded-full border border-outline text-on-surface-variant font-label-md text-label-md transition-all hover:border-primary">
+                Desserts <span class="opacity-70 ml-1 text-xs">(6)</span>
+</button>
+</div>
+</header>
+<main class="mt-44 px-margin-mobile space-y-gutter">
+<div class="flex items-center justify-between">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Authentic Curries</h2>
+<span class="text-on-surface-variant text-label-md font-label-md">6 Items Found</span>
+</div>
+<!-- Dish Card 1 -->
+<div class="tonal-card rounded-xl overflow-hidden shadow-[0px_4px_12px_rgba(45,74,62,0.04)] border border-outline-variant/20 flex flex-col">
+<div class="relative h-48 w-full overflow-hidden">
+<img alt="Butter Chicken" class="w-full h-full object-cover" data-alt="A top-down perspective of a rich Butter Chicken curry in a traditional copper bowl, garnished with a swirl of fresh cream and green coriander. The scene is set on a rustic wooden table with soft, warm golden lighting reflecting the modern heritage aesthetic of Spice Palace. The colors are deep forest greens and vibrant saffron oranges." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAdTUQX9Fo2AezEo0PQb0tJACBmtC9ts1HJOV_hDx8kysIaYUMmQZTFdKXk4lL2fQqfgvnGzgbkAkfco8s4wMbj3vF3x7tDb2ICQLHSTLrAmSjFeOcX5VJt1DfQF0DCPGeNBOBnLMb-FSEpagoYIpazuYjTRoVyigWyevtfgIcq-SgFIIIlFiwyUf-qVc-Mul8SIkThXz4UmnEVcAg9BcyEaUPK4guGOLCtenWlVLOpiSjaApXG3xRP8rM8O03BWPZcUBLmxufbxE"/>
+<div class="absolute top-3 left-3 bg-surface/90 backdrop-blur-sm px-2 py-1 rounded-md flex items-center gap-1">
+<span class="w-3 h-3 border border-secondary rounded-[1px] flex items-center justify-center p-[2px]">
+<span class="w-full h-full bg-secondary rounded-full"></span>
+</span>
+<span class="text-[10px] font-bold text-secondary uppercase tracking-wider">Non-Veg</span>
+</div>
+</div>
+<div class="p-stack-md flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-primary">Classic Butter Chicken</h3>
+<span class="font-bold text-primary text-body-lg">₹495</span>
+</div>
+<p class="text-on-surface-variant text-body-md line-clamp-2">Tender tandoori chicken simmered in a velvet tomato gravy, finished with butter and dried fenugreek.</p>
+<div class="flex items-center gap-4 mt-2 mb-4">
+<div class="flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-[18px]" data-icon="star" data-weight="fill">star</span>
+<span class="text-label-md font-label-md">4.9 (120+)</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="schedule">schedule</span>
+<span class="text-label-md font-label-md">25 mins</span>
+</div>
+</div>
+<div class="flex items-center justify-between gap-4">
+<div class="flex items-center bg-white border border-outline-variant rounded-full p-1 h-12 w-32 justify-between">
+<button class="w-10 h-10 flex items-center justify-center text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="remove">remove</span>
+</button>
+<span class="font-bold text-primary font-body-md">1</span>
+<button class="w-10 h-10 flex items-center justify-center text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+<button class="flex-1 bg-primary text-white font-label-md text-label-md h-12 rounded-full flex items-center justify-center gap-2 active:scale-95 transition-transform">
+                        Add to Cart
+                    </button>
+</div>
+</div>
+</div>
+<!-- Dish Card 2 -->
+<div class="tonal-card rounded-xl overflow-hidden shadow-[0px_4px_12px_rgba(45,74,62,0.04)] border border-outline-variant/20 flex flex-col">
+<div class="relative h-48 w-full overflow-hidden">
+<img alt="Paneer Tikka Masala" class="w-full h-full object-cover" data-alt="A close-up shot of Paneer Tikka Masala with large chunks of cottage cheese in a thick, textured onion-tomato gravy. Garnished with ginger juliennes and fresh parsley, the dish glows with saffron-red hues. The atmosphere is upscale dining in Pune, with high-key lighting that emphasizes the tactile creaminess of the sauce." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8tH1qEeHAygcKjUJMpkLE5RAG_b1b5WOA_YRgXVF9_1xGXB7VrI4rqwrjLV9rhqAS0AqMtNwaXZRkX6B4gI4h6o1PdRFr1J49yUpaaFSofw9bjlWaJROpAlD3pKP-_buLwozwbnPyuIif8SCVxfG84-tSKqWHqR0VVusBRN-2V_aFSS_YX1C2JRYUj5Lx-7K8DJ8lg_47COx2EAjIk_fuKYt41u9I7O7H0ksmLYS09b9TVlHMerbVygcezOQwUaGEqAxwYb95yBs"/>
+<div class="absolute top-3 left-3 bg-surface/90 backdrop-blur-sm px-2 py-1 rounded-md flex items-center gap-1">
+<span class="w-3 h-3 border border-primary-container rounded-[1px] flex items-center justify-center p-[2px]">
+<span class="w-full h-full bg-primary-container rounded-full"></span>
+</span>
+<span class="text-[10px] font-bold text-primary-container uppercase tracking-wider">Veg</span>
+</div>
+<div class="absolute top-3 right-3 bg-secondary-container/90 backdrop-blur-sm px-2 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-white text-[14px]" data-icon="local_fire_department">local_fire_department</span>
+<span class="text-[10px] font-bold text-white uppercase tracking-wider">Chef's Special</span>
+</div>
+</div>
+<div class="p-stack-md flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-primary">Paneer Tikka Masala</h3>
+<span class="font-bold text-primary text-body-lg">₹425</span>
+</div>
+<p class="text-on-surface-variant text-body-md line-clamp-2">Char-grilled cottage cheese cubes cooked in a spiced onion tomato gravy with bell peppers.</p>
+<div class="flex items-center gap-4 mt-2 mb-4">
+<div class="flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-[18px]" data-icon="star" data-weight="fill">star</span>
+<span class="text-label-md font-label-md">4.8 (85+)</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="schedule">schedule</span>
+<span class="text-label-md font-label-md">20 mins</span>
+</div>
+<div class="flex items-center gap-0.5 text-secondary">
+<span class="material-symbols-outlined text-[14px]" data-icon="chili">stat_1</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="chili">stat_1</span>
+</div>
+</div>
+<div class="flex items-center justify-between gap-4">
+<div class="flex items-center bg-white border border-outline-variant rounded-full p-1 h-12 w-32 justify-between">
+<button class="w-10 h-10 flex items-center justify-center text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="remove">remove</span>
+</button>
+<span class="font-bold text-primary font-body-md">0</span>
+<button class="w-10 h-10 flex items-center justify-center text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+<button class="flex-1 bg-primary text-white font-label-md text-label-md h-12 rounded-full flex items-center justify-center gap-2 active:scale-95 transition-transform">
+                        Add to Cart
+                    </button>
+</div>
+</div>
+</div>
+<!-- Dish Card 3 -->
+<div class="tonal-card rounded-xl overflow-hidden shadow-[0px_4px_12px_rgba(45,74,62,0.04)] border border-outline-variant/20 flex flex-col">
+<div class="relative h-48 w-full overflow-hidden">
+<img alt="Mutton Rogan Josh" class="w-full h-full object-cover" data-alt="A vibrant plate of Mutton Rogan Josh, featuring tender meat pieces in a glossy, aromatic red gravy. Infused with Kashmiri chillies and traditional spices, the dish is presented with a side of fresh naan. The lighting is sophisticated and moody, highlighting the rich oil separation on top which signifies authenticity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOBdSmgWeJrQBC9_hKu9ox9OBIV1TNOY9u1k_McXopWZdcRzfVF_xQmJl2fzrMJfEXgWsd_b8Fs3g2w4NYtf7Qi5acL2DN9Ohzl-rssoetSsn7W-lruDWDO-UZOjXGr_IEuXYlongPIqdmnb70T5kSVKUS7hM6trMUiTESsCRFgrQO6vSN0kMiLWOR_XeG7NZ82pqMXqwESQLRR-b1A8vHP0GaVgwU2M51aFvcM_FCsD_Sp4x_g5btARLXYWvutCv6x6iK6VORRWw"/>
+<div class="absolute top-3 left-3 bg-surface/90 backdrop-blur-sm px-2 py-1 rounded-md flex items-center gap-1">
+<span class="w-3 h-3 border border-secondary rounded-[1px] flex items-center justify-center p-[2px]">
+<span class="w-full h-full bg-secondary rounded-full"></span>
+</span>
+<span class="text-[10px] font-bold text-secondary uppercase tracking-wider">Non-Veg</span>
+</div>
+</div>
+<div class="p-stack-md flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-primary">Mutton Rogan Josh</h3>
+<span class="font-bold text-primary text-body-lg">₹575</span>
+</div>
+<p class="text-on-surface-variant text-body-md line-clamp-2">Authentic Kashmiri lamb curry cooked with aromatic spices, alkanet root, and saffron.</p>
+<div class="flex items-center gap-4 mt-2 mb-4">
+<div class="flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-[18px]" data-icon="star" data-weight="fill">star</span>
+<span class="text-label-md font-label-md">5.0 (54+)</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="schedule">schedule</span>
+<span class="text-label-md font-label-md">35 mins</span>
+</div>
+</div>
+<div class="flex items-center justify-between gap-4">
+<div class="flex items-center bg-white border border-outline-variant rounded-full p-1 h-12 w-32 justify-between">
+<button class="w-10 h-10 flex items-center justify-center text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="remove">remove</span>
+</button>
+<span class="font-bold text-primary font-body-md">2</span>
+<button class="w-10 h-10 flex items-center justify-center text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+<button class="flex-1 bg-primary text-white font-label-md text-label-md h-12 rounded-full flex items-center justify-center gap-2 active:scale-95 transition-transform">
+                        Add to Cart
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Sticky Bottom Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-surface px-margin-mobile py-4 shadow-[0px_-10px_30px_rgba(45,74,62,0.08)] z-50 flex items-center gap-3 border-t border-outline-variant/10">
+<div class="flex gap-2">
+<a class="w-14 h-14 rounded-full border border-outline-variant flex items-center justify-center text-primary hover:bg-surface-container-low transition-colors" href="https://wa.me/#">
+<span class="material-symbols-outlined text-[24px]" data-icon="chat">chat</span>
+</a>
+<a class="w-14 h-14 rounded-full border border-outline-variant flex items-center justify-center text-primary hover:bg-surface-container-low transition-colors" href="tel:+#">
+<span class="material-symbols-outlined text-[24px]" data-icon="call">call</span>
+</a>
+</div>
+<button class="flex-1 bg-primary text-white h-14 rounded-full font-headline-md text-headline-md flex items-center justify-center gap-3 active:scale-[0.98] transition-all shadow-lg">
+<span>Order Now</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</nav>
+<!-- Subtle Texture/Atmosphere -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03]" style="background-image: url('https://www.transparenttextures.com/patterns/rice-paper.png');"></div>
+<script>
+        // Category switching micro-interaction
+        const categoryButtons = document.querySelectorAll('.hide-scrollbar button');
+        categoryButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryButtons.forEach(b => b.classList.remove('active-category', 'border-primary'));
+                categoryButtons.forEach(b => b.classList.add('border-outline', 'text-on-surface-variant'));
+                btn.classList.add('active-category', 'border-primary');
+                btn.classList.remove('border-outline', 'text-on-surface-variant');
+            });
+        });
+
+        // Quantity selector logic
+        document.querySelectorAll('.tonal-card').forEach(card => {
+            const minusBtn = card.querySelector('button:has(span[data-icon="remove"])');
+            const plusBtn = card.querySelector('button:has(span[data-icon="add"])');
+            const quantitySpan = card.querySelector('.font-bold.text-primary.font-body-md');
+
+            minusBtn.addEventListener('click', () => {
+                let current = parseInt(quantitySpan.textContent);
+                if (current > 0) {
+                    quantitySpan.textContent = current - 1;
+                }
+            });
+
+            plusBtn.addEventListener('click', () => {
+                let current = parseInt(quantitySpan.textContent);
+                quantitySpan.textContent = current + 1;
+            });
+        });
+    </script>
+</body></html>

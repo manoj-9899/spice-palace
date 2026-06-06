@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Spice Palace - Popular Menu</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#ffb77e",
+                    "secondary": "#914c00",
+                    "tertiary-fixed": "#ffe08f",
+                    "surface-variant": "#e5e2e1",
+                    "primary-fixed-dim": "#adcebe",
+                    "inverse-on-surface": "#f3f0ef",
+                    "on-tertiary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "outline": "#727974",
+                    "tertiary-container": "#d0a61f",
+                    "surface": "#fcf9f8",
+                    "primary": "#163328",
+                    "on-primary-fixed": "#022016",
+                    "surface-dim": "#dcd9d9",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-container": "#fe932d",
+                    "on-tertiary-fixed-variant": "#584400",
+                    "on-surface": "#1b1b1b",
+                    "error": "#ba1a1a",
+                    "on-background": "#1b1b1b",
+                    "surface-container-high": "#eae7e7",
+                    "surface-container": "#f0eded",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#6e3900",
+                    "primary-container": "#2d4a3e",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#e5e2e1",
+                    "surface-tint": "#476558",
+                    "tertiary-fixed-dim": "#eec13c",
+                    "surface-bright": "#fcf9f8",
+                    "background": "#fcf9f8",
+                    "on-surface-variant": "#424844",
+                    "on-secondary-fixed": "#2f1500",
+                    "tertiary": "#755b00",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed": "#ffdcc3",
+                    "primary-fixed": "#c9ead9",
+                    "on-secondary-container": "#663400",
+                    "on-tertiary-container": "#503d00",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#adcebe",
+                    "inverse-surface": "#313030",
+                    "on-tertiary-fixed": "#241a00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "gutter": "24px",
+                    "stack-md": "16px",
+                    "container-max": "1200px",
+                    "margin-mobile": "16px",
+                    "stack-lg": "32px",
+                    "margin-desktop": "48px",
+                    "stack-sm": "8px",
+                    "section-gap": "80px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Playfair Display"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "label-sm": ["DM Sans"],
+                    "body-md": ["DM Sans"],
+                    "label-md": ["DM Sans"],
+                    "display-lg": ["Playfair Display"],
+                    "body-lg": ["DM Sans"],
+                    "headline-lg": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #FAF7F0;
+            color: #1b1b1b;
+            -webkit-font-smoothing: antialiased;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen">
+<!-- Top Navigation -->
+<header class="bg-surface shadow-[0px_10px_30px_rgba(45,74,62,0.08)] fixed top-0 w-full z-50">
+<nav class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto h-20">
+<div class="font-headline-md text-headline-md text-primary">Spice Palace</div>
+<div class="hidden md:flex gap-gutter items-center">
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="#">Menu</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">About</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Our Chef</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Contact</a>
+</div>
+<button class="bg-primary-container text-on-primary-container font-label-md text-label-md px-6 py-3 rounded-full active:scale-95 transition-transform duration-150">
+                Order Online
+            </button>
+</nav>
+</header>
+<main class="flex-grow pt-24 pb-stack-lg">
+<!-- Popular Menu Section -->
+<section class="max-w-container-max mx-auto px-margin-mobile">
+<!-- Header -->
+<div class="flex flex-col items-start gap-stack-sm mb-stack-lg">
+<span class="text-secondary font-label-md text-label-md tracking-widest flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                    Order Now
+                </span>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary">
+                    Our <span class="italic text-secondary">Popular</span> Menu
+                </h1>
+</div>
+<!-- Category Filters -->
+<div class="flex overflow-x-auto no-scrollbar gap-stack-md pb-stack-md mb-stack-lg -mx-margin-mobile px-margin-mobile">
+<!-- Active Filter -->
+<button class="flex-shrink-0 flex items-center gap-2 bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label-md text-label-md transition-all">
+<span>🍛 Curries</span>
+<span class="bg-white/20 text-[10px] px-1.5 py-0.5 rounded-full">6</span>
+</button>
+<!-- Inactive Filters -->
+<button class="flex-shrink-0 flex items-center gap-2 border border-outline-variant text-on-surface-variant px-6 py-3 rounded-full font-label-md text-label-md hover:border-primary transition-all">
+<span>🥗 Starters</span>
+<span class="bg-surface-container-highest text-on-surface-variant text-[10px] px-1.5 py-0.5 rounded-full">6</span>
+</button>
+<button class="flex-shrink-0 flex items-center gap-2 border border-outline-variant text-on-surface-variant px-6 py-3 rounded-full font-label-md text-label-md hover:border-primary transition-all">
+<span>🍞 Breads</span>
+<span class="bg-surface-container-highest text-on-surface-variant text-[10px] px-1.5 py-0.5 rounded-full">6</span>
+</button>
+<button class="flex-shrink-0 flex items-center gap-2 border border-outline-variant text-on-surface-variant px-6 py-3 rounded-full font-label-md text-label-md hover:border-primary transition-all">
+<span>🍚 Biryani</span>
+<span class="bg-surface-container-highest text-on-surface-variant text-[10px] px-1.5 py-0.5 rounded-full">6</span>
+</button>
+<button class="flex-shrink-0 flex items-center gap-2 border border-outline-variant text-on-surface-variant px-6 py-3 rounded-full font-label-md text-label-md hover:border-primary transition-all">
+<span>🍮 Desserts</span>
+<span class="bg-surface-container-highest text-on-surface-variant text-[10px] px-1.5 py-0.5 rounded-full">6</span>
+</button>
+</div>
+<!-- Menu Grid (Vertical Stack for Mobile Preference) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-stack-lg">
+<!-- Card 1: Chicken Butter Masala -->
+<div class="bg-[#F5EFE0] rounded-[24px] p-stack-md shadow-[0px_10px_30px_rgba(45,74,62,0.08)] flex flex-col gap-stack-md transition-transform duration-300 hover:-translate-y-1">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="flex items-center text-secondary text-label-sm font-label-sm">⭐ 4.8</span>
+<span class="text-on-surface-variant text-label-sm font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 15 min
+                            </span>
+</div>
+<span class="bg-secondary-container/20 text-secondary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Popular</span>
+</div>
+<div class="relative aspect-square overflow-hidden rounded-[14px]">
+<img alt="Chicken Butter Masala" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" data-alt="A top-down premium food photography shot of authentic North Indian Chicken Butter Masala served in a traditional copper bowl. The curry is rich, creamy, and orange-tinted with a swirl of fresh white cream on top and a garnish of green cilantro. The lighting is soft and warm, highlighting the velvety texture of the sauce against an ivory background, reflecting a high-end luxury dining aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCljQdtYWfxYa7gN8PF06tq-_6CMeetG4fxCmyRJ_rY9V2HjAbaLVJvq2D_yhP8usApFpxhGwpD6MKMigDs0N9lJVmeiSCtQVvq33vkH70MDpU5-1G6ySVMoln_NV4W7FTqUzR_I-NEYHjs7iZZp7HDSztw6BksetvHms0duY2GxliVBw9i5PXxg4mBzX-34EZzNK3UlmgI27cshDGurZ_tBJUeh46awdBSc4VTha9F9OLuQcz3Y3_GnDg6nhjItdvQquBmyI0-Vg"/>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-md text-headline-md text-primary">Chicken Butter Masala</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Tender tandoori chicken cooked in a rich, buttery tomato-based gravy with aromatic spices.</p>
+</div>
+<div class="mt-auto pt-stack-sm flex flex-col gap-stack-md">
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold text-[22px]">₹580</span>
+<div class="flex items-center bg-surface rounded-full shadow-sm">
+<button class="w-11 h-11 flex items-center justify-center text-primary hover:bg-primary/5 rounded-full transition-colors">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="w-8 text-center font-bold font-body-md">1</span>
+<button class="w-11 h-11 flex items-center justify-center text-primary hover:bg-primary/5 rounded-full transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<button class="w-full bg-primary-container text-white py-4 rounded-[12px] font-label-md text-label-md hover:bg-primary active:scale-95 transition-all">
+                            Add to Cart
+                        </button>
+</div>
+</div>
+<!-- Card 2: Dal Makhani -->
+<div class="bg-[#F5EFE0] rounded-[24px] p-stack-md shadow-[0px_10px_30px_rgba(45,74,62,0.08)] flex flex-col gap-stack-md transition-transform duration-300 hover:-translate-y-1">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="flex items-center text-secondary text-label-sm font-label-sm">⭐ 4.9</span>
+<span class="text-on-surface-variant text-label-sm font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 20 min
+                            </span>
+</div>
+<span class="bg-secondary-container/20 text-secondary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Popular</span>
+</div>
+<div class="relative aspect-square overflow-hidden rounded-[14px]">
+<img alt="Dal Makhani" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" data-alt="Close-up shot of rich Dal Makhani in a minimalist ceramic bowl, featuring dark slow-cooked lentils with a silky texture. The dish is topped with a dollop of white butter and fresh cream, illuminated by soft golden sunlight that emphasizes its creamy sheen. The overall style is clean, modern heritage with a focus on tactile food textures and warm, earthy color palettes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9sQKsPBoyl5hWr9fdtwgiCBC3zGItNrTtm7X2eEHj1he7N-I1nwHyHqmPR3nGRwv9LOIpHhQcJWuvDZ7jgC4j9WbHPsfSJELfH2EliQmNYsc35Lhjh8BWW-5jlBqBi9-9e5ZZOVCvTcUW_8Kqn89_pxO4RhKUK0_NNdY-DFrnAGfxUAJKyMmnWi6QqPk6bMnwC8tTcs2HpljGJeO6IVcSXAFJkuAZ7Bxcd0QxCv70ZY9IUay2ieEqQvRlIjsxb_yTM7bLNvYgUO0"/>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-md text-headline-md text-primary">Dal Makhani</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Slow-cooked black lentils and kidney beans, finished with cream and butter for 24 hours.</p>
+</div>
+<div class="mt-auto pt-stack-sm flex flex-col gap-stack-md">
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold text-[22px]">₹420</span>
+<div class="flex items-center bg-surface rounded-full shadow-sm">
+<button class="w-11 h-11 flex items-center justify-center text-primary hover:bg-primary/5 rounded-full transition-colors">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="w-8 text-center font-bold font-body-md">1</span>
+<button class="w-11 h-11 flex items-center justify-center text-primary hover:bg-primary/5 rounded-full transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<button class="w-full bg-primary-container text-white py-4 rounded-[12px] font-label-md text-label-md hover:bg-primary active:scale-95 transition-all">
+                            Add to Cart
+                        </button>
+</div>
+</div>
+<!-- Card 3: Rogan Josh -->
+<div class="bg-[#F5EFE0] rounded-[24px] p-stack-md shadow-[0px_10px_30px_rgba(45,74,62,0.08)] flex flex-col gap-stack-md transition-transform duration-300 hover:-translate-y-1">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="flex items-center text-secondary text-label-sm font-label-sm">⭐ 4.7</span>
+<span class="text-on-surface-variant text-label-sm font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 25 min
+                            </span>
+</div>
+</div>
+<div class="relative aspect-square overflow-hidden rounded-[14px]">
+<img alt="Rogan Josh" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" data-alt="A sophisticated presentation of Kashmiri Rogan Josh, featuring tender lamb pieces in a deep red, aromatic gravy spiced with alkanet root. The dish is presented in a modern, dark stoneware plate on a minimalist cream linen. The mood is moody yet elegant, highlighting the vibrant reds of the spice and the rich oils of the curry under focused, warm directional lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuopBeukv_8DdHYfF1tANbV0RSkA531_dEZoSGwtrGzQp0_UqWakzyTYiC8pD85bvtFXyahWfGb8RO_tyynsNz19KeqByYa_rvrQMwS5WzPmVgG9mMtp9j6v6HqEIYGbW5wDs3HKbCVwHfIJrOsuMywe_9soGUwJXjjx-atOE4k-sPLT9gGZdCDGq8nf0KLzvf08FW7Ve_Zt6Y2Df7EuKXLSL6q1BeMPCS8IfyHPu2KiP646AW_ExKJaxMsmdlIxuwwBxbY7Sr5nw"/>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-md text-headline-md text-primary">Rogan Josh</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Authentic Kashmiri lamb curry cooked with aromatic spices and a deep red gravy.</p>
+</div>
+<div class="mt-auto pt-stack-sm flex flex-col gap-stack-md">
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold text-[22px]">₹720</span>
+<div class="flex items-center bg-surface rounded-full shadow-sm">
+<button class="w-11 h-11 flex items-center justify-center text-primary hover:bg-primary/5 rounded-full transition-colors">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="w-8 text-center font-bold font-body-md">1</span>
+<button class="w-11 h-11 flex items-center justify-center text-primary hover:bg-primary/5 rounded-full transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<button class="w-full bg-primary-container text-white py-4 rounded-[12px] font-label-md text-label-md hover:bg-primary active:scale-95 transition-all">
+                            Add to Cart
+                        </button>
+</div>
+</div>
+<!-- Card 4: Paneer Tikka Masala -->
+<div class="bg-[#F5EFE0] rounded-[24px] p-stack-md shadow-[0px_10px_30px_rgba(45,74,62,0.08)] flex flex-col gap-stack-md transition-transform duration-300 hover:-translate-y-1">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="flex items-center text-secondary text-label-sm font-label-sm">⭐ 4.6</span>
+<span class="text-on-surface-variant text-label-sm font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 15 min
+                            </span>
+</div>
+</div>
+<div class="relative aspect-square overflow-hidden rounded-[14px]">
+<img alt="Paneer Tikka Masala" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" data-alt="Vibrant Paneer Tikka Masala with charred cottage cheese cubes in a thick, tomato-onion masala gravy. The dish is garnished with fine slivers of ginger and fresh coriander. Shot in a minimalist, bright setting that emphasizes the vivid orange and green colors against a neutral ivory background. Fine dining aesthetic with a focus on fresh ingredients and high-quality preparation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2AxK3mEBFkUl4JR4g2nmyTttSv2C7mSC0LJueWYfznuL-lYGwTtdYmC-HV9pLs0Vvy5KB_1gRNI9rOFl1zOrBuJ-5ke4zYJoi5xFs00uoKq7_TxrEVWK-PlfNwLQU94tMZ39UODhQt8vBMDmmZZWfW9ACCHEHZX22N06NRTBO27KALdmofSJaDq9cmC_voGw0pZTJmv-bc0sE3ZnK6uLqD2R0UPVFKTfmZNh5wwOIAZzM9NIvC3ZXt69jolbz_cBC8EV6YrSrf8E"/>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-md text-headline-md text-primary">Paneer Tikka Masala</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Grilled paneer cubes cooked in a spicy, creamy tomato gravy with bell peppers.</p>
+</div>
+<div class="mt-auto pt-stack-sm flex flex-col gap-stack-md">
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold text-[22px]">₹480</span>
+<div class="flex items-center bg-surface rounded-full shadow-sm">
+<button class="w-11 h-11 flex items-center justify-center text-primary hover:bg-primary/5 rounded-full transition-colors">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="w-8 text-center font-bold font-body-md">1</span>
+<button class="w-11 h-11 flex items-center justify-center text-primary hover:bg-primary/5 rounded-full transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<button class="w-full bg-primary-container text-white py-4 rounded-[12px] font-label-md text-label-md hover:bg-primary active:scale-95 transition-all">
+                            Add to Cart
+                        </button>
+</div>
+</div>
+<!-- Card 5: Hyderabadi Biryani -->
+<div class="bg-[#F5EFE0] rounded-[24px] p-stack-md shadow-[0px_10px_30px_rgba(45,74,62,0.08)] flex flex-col gap-stack-md transition-transform duration-300 hover:-translate-y-1">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="flex items-center text-secondary text-label-sm font-label-sm">⭐ 4.9</span>
+<span class="text-on-surface-variant text-label-sm font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 30 min
+                            </span>
+</div>
+<span class="bg-secondary-container/20 text-secondary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Popular</span>
+</div>
+<div class="relative aspect-square overflow-hidden rounded-[14px]">
+<img alt="Hyderabadi Biryani" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" data-alt="Exquisite Hyderabadi Biryani served in a traditional clay pot, showing long-grain basmati rice layered with aromatic spices, caramelized onions, and tender meat. The scene is illuminated by warm, ambient restaurant lighting that creates a cozy, premium feel. Saffron strands and fresh mint leaves garnish the top, adding pops of color to the textured rice grains." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi1YMva0Cp7bMnmP--LUvQCqksYX_aHi-wRLJuP89a2fQzQLsMzsZw2f6hPPSQE3s9dUBxXPabtxopwAbiqVoe75uVn4EjTyS4mrqOjB--i3qttfpqCYr__jgs1Nb2dma7165jXj8YoZaSVqk1iMZi7oCnho9-9ohp3Jsozgwn8tHJNtvtZUpce6m0mAF8-LfVDqGt_ZlyhX5aWMy5yvWUblgDVmNm4HCdDE9MN-e7024Ebg5M_LLFqaUwPKVdXqVY1kq_payvps4"/>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-md text-headline-md text-primary">Hyderabadi Biryani</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Fragrant basmati rice layered with marinated meat, spices, and caramelized onions.</p>
+</div>
+<div class="mt-auto pt-stack-sm flex flex-col gap-stack-md">
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold text-[22px]">₹850</span>
+<div class="flex items-center bg-surface rounded-full shadow-sm">
+<button class="w-11 h-11 flex items-center justify-center text-primary hover:bg-primary/5 rounded-full transition-colors">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="w-8 text-center font-bold font-body-md">1</span>
+<button class="w-11 h-11 flex items-center justify-center text-primary hover:bg-primary/5 rounded-full transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<button class="w-full bg-primary-container text-white py-4 rounded-[12px] font-label-md text-label-md hover:bg-primary active:scale-95 transition-all">
+                            Add to Cart
+                        </button>
+</div>
+</div>
+<!-- Card 6: Gulab Jamun -->
+<div class="bg-[#F5EFE0] rounded-[24px] p-stack-md shadow-[0px_10px_30px_rgba(45,74,62,0.08)] flex flex-col gap-stack-md transition-transform duration-300 hover:-translate-y-1">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="flex items-center text-secondary text-label-sm font-label-sm">⭐ 4.8</span>
+<span class="text-on-surface-variant text-label-sm font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 10 min
+                            </span>
+</div>
+</div>
+<div class="relative aspect-square overflow-hidden rounded-[14px]">
+<img alt="Gulab Jamun" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110" data-alt="A decadent dessert presentation of Gulab Jamun, featuring two golden-brown syrup-soaked dumplings served in a small ivory dish. They are garnished with crushed pistachios and edible silver leaf. The syrup glistens under warm spotlight, creating a rich, indulgent mood. The minimalist background focuses entirely on the glossy texture and inviting warmth of the dessert." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa5p7FH-rt5w7b_S0hJ2JK-rtSi2Sw0wirE2xTwy5t0PkfV8puTDWDtSWlbsHZ7XVxxZI5JdnZd8_mmbaTCjdRK1tDH-TF9n8oI0uvXOO3egE77UvSOJrveIY9FBBoDogld2UCGv9zGqEVGe67wRJusz6z3NLQ4G3djtf1Ek8vJ68ljRNf8eG_hdZ5RsiGB6DToNhsVZpZVgp7yODdjzrTscrtmbIMcuX0B6TKNEwYqB2NQhBL1JxSdN6IUr0ZzfS32H1CyVAldck"/>
+</div>
+<div class="flex flex-col gap-1">
+<h3 class="font-headline-md text-headline-md text-primary">Gulab Jamun</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Soft, golden-brown milk dumplings soaked in a fragrant cardamom sugar syrup.</p>
+</div>
+<div class="mt-auto pt-stack-sm flex flex-col gap-stack-md">
+<div class="flex justify-between items-center">
+<span class="text-primary font-bold text-[22px]">₹180</span>
+<div class="flex items-center bg-surface rounded-full shadow-sm">
+<button class="w-11 h-11 flex items-center justify-center text-primary hover:bg-primary/5 rounded-full transition-colors">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<span class="w-8 text-center font-bold font-body-md">1</span>
+<button class="w-11 h-11 flex items-center justify-center text-primary hover:bg-primary/5 rounded-full transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<button class="w-full bg-primary-container text-white py-4 rounded-[12px] font-label-md text-label-md hover:bg-primary active:scale-95 transition-all">
+                            Add to Cart
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-highest">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-stack-lg max-w-container-max mx-auto gap-stack-md">
+<div class="font-headline-md text-headline-md text-primary">Spice Palace</div>
+<div class="flex flex-wrap justify-center gap-gutter">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Sustainability</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">Careers</a>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant opacity-80">
+                © 2024 Spice Palace. All rights reserved.
+            </div>
+</div>
+</footer>
+<!-- Mobile Navigation Bottom Bar -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 bg-surface shadow-[0px_-4px_16px_rgba(0,0,0,0.05)] px-6 py-3 flex justify-between items-center z-50">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+<span class="font-label-sm text-[10px]">Menu</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-label-sm text-[10px]">Favorites</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant relative">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="absolute -top-1 -right-1 bg-secondary text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">2</span>
+<span class="font-label-sm text-[10px]">Cart</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-[10px]">Profile</span>
+</button>
+</div>
+<script>
+        // Simple Interaction Logic for Quantity Selectors
+        document.querySelectorAll('.flex.items-center.bg-surface.rounded-full').forEach(selector => {
+            const minusBtn = selector.querySelector('button:first-child');
+            const plusBtn = selector.querySelector('button:last-child');
+            const countSpan = selector.querySelector('span');
+
+            plusBtn.addEventListener('click', () => {
+                let count = parseInt(countSpan.textContent);
+                countSpan.textContent = count + 1;
+            });
+
+            minusBtn.addEventListener('click', () => {
+                let count = parseInt(countSpan.textContent);
+                if (count > 1) {
+                    countSpan.textContent = count - 1;
+                }
+            });
+        });
+
+        // Add to Cart Feedback
+        document.querySelectorAll('button:contains("Add to Cart")').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const originalText = this.textContent;
+                this.textContent = 'Added to Cart!';
+                this.classList.replace('bg-primary-container', 'bg-secondary');
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.classList.replace('bg-secondary', 'bg-primary-container');
+                }, 2000);
+            });
+        });
+        
+        // Polyfill for :contains selector if needed, but here we can just use textContent
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(button => {
+            if (button.textContent.trim() === 'Add to Cart') {
+                button.addEventListener('click', function() {
+                    const originalText = this.textContent;
+                    this.innerHTML = '<span class="flex items-center justify-center gap-2"><span class="material-symbols-outlined text-[20px]">check_circle</span> Added</span>';
+                    this.classList.add('bg-secondary');
+                    this.classList.remove('bg-primary-container');
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.classList.remove('bg-secondary');
+                        this.classList.add('bg-primary-container');
+                    }, 1500);
+                });
+            }
+        });
+    </script>
+</body></html>

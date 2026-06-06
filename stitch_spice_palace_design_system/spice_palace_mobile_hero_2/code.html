@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Spice Palace - Authentic Indian Cuisine</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pressed-state:active {
+            transform: scale(0.95);
+            transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        /* Soft ambient shadow with Forest Green tint */
+        .ambient-shadow {
+            box-shadow: 0px 10px 30px rgba(45, 74, 62, 0.08);
+        }
+        /* Custom WhatsApp Green */
+        .bg-whatsapp {
+            background-color: #25D366;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#99b9a9",
+                      "error-container": "#ffdad6",
+                      "surface-container-low": "#f6f3f2",
+                      "on-primary-fixed": "#022016",
+                      "surface": "#fcf9f8",
+                      "on-tertiary-fixed-variant": "#584400",
+                      "outline": "#727974",
+                      "surface-container-highest": "#e5e2e1",
+                      "tertiary-container": "#d0a61f",
+                      "error": "#ba1a1a",
+                      "inverse-primary": "#adcebe",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary-fixed-variant": "#304d40",
+                      "on-primary": "#ffffff",
+                      "surface-dim": "#dcd9d9",
+                      "secondary": "#914c00",
+                      "inverse-surface": "#313030",
+                      "secondary-fixed-dim": "#ffb77e",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed-dim": "#eec13c",
+                      "secondary-fixed": "#ffdcc3",
+                      "primary-fixed-dim": "#adcebe",
+                      "on-tertiary-container": "#503d00",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-container": "#663400",
+                      "on-background": "#1b1b1b",
+                      "primary-fixed": "#c9ead9",
+                      "on-secondary-fixed-variant": "#6e3900",
+                      "tertiary": "#755b00",
+                      "on-secondary": "#ffffff",
+                      "on-surface": "#1b1b1b",
+                      "on-secondary-fixed": "#2f1500",
+                      "surface-container": "#f0eded",
+                      "on-tertiary-fixed": "#241a00",
+                      "inverse-on-surface": "#f3f0ef",
+                      "surface-tint": "#476558",
+                      "tertiary-fixed": "#ffe08f",
+                      "primary-container": "#2d4a3e",
+                      "surface-bright": "#fcf9f8",
+                      "primary": "#163328",
+                      "secondary-container": "#fe932d",
+                      "on-error": "#ffffff",
+                      "surface-variant": "#e5e2e1",
+                      "surface-container-high": "#eae7e7",
+                      "on-surface-variant": "#424844",
+                      "outline-variant": "#c1c8c3",
+                      "background": "#fcf9f8"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1200px",
+                      "unit": "8px",
+                      "margin-desktop": "48px",
+                      "section-gap": "80px",
+                      "margin-mobile": "16px",
+                      "stack-md": "16px",
+                      "stack-sm": "8px",
+                      "stack-lg": "32px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Playfair Display"],
+                      "display-lg-mobile": ["Playfair Display"],
+                      "body-md": ["DM Sans"],
+                      "label-sm": ["DM Sans"],
+                      "body-lg": ["DM Sans"],
+                      "label-md": ["DM Sans"],
+                      "display-lg": ["Playfair Display"],
+                      "headline-lg": ["Playfair Display"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-surface shadow-sm h-20 flex items-center px-margin-mobile">
+<div class="flex justify-between items-center w-full">
+<!-- Brand Logo -->
+<div class="font-headline-md text-headline-md text-primary">
+                Spice Palace
+            </div>
+<!-- Hamburger Menu -->
+<button class="p-2 pressed-state text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</nav>
+<!-- Hero Section -->
+<main class="pt-24 pb-stack-lg px-margin-mobile flex flex-col items-center overflow-x-hidden">
+<!-- Authentic Badge -->
+<div class="inline-flex items-center px-4 py-1.5 rounded-full bg-secondary-fixed mb-stack-md">
+<span class="font-label-md text-label-md text-on-secondary-fixed-variant">Authentic Indian Cuisine</span>
+</div>
+<!-- Headline -->
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-on-surface text-center mb-stack-sm max-w-sm">
+            Authentic Indian Cuisine Crafted Fresh Every Day
+        </h1>
+<!-- Subheading -->
+<p class="font-body-md text-body-md text-on-surface-variant text-center mb-stack-lg max-w-xs">
+            Experience traditional flavors prepared by expert chefs in Pune.
+        </p>
+<!-- CTA Stack -->
+<div class="w-full space-y-4 mb-stack-lg">
+<button class="w-full h-14 rounded-full bg-primary-container text-on-primary font-label-md text-label-md pressed-state ambient-shadow">
+                Order Online
+            </button>
+<button class="w-full h-14 rounded-full border-2 border-primary-container text-primary-container font-label-md text-label-md pressed-state">
+                View Menu
+            </button>
+<button class="w-full h-14 rounded-full bg-whatsapp text-white font-label-md text-label-md pressed-state flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="chat" style="font-variation-settings: 'FILL' 1;">chat</span>
+                Book a Table
+            </button>
+</div>
+<!-- Trust Badges -->
+<div class="flex flex-wrap justify-center gap-x-6 gap-y-4 mb-12">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm text-on-surface">4.9 Rating</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="group" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-sm text-label-sm text-on-surface">1200+ Happy Customers</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="eco" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span class="font-label-sm text-label-sm text-on-surface">Fresh Ingredients Daily</span>
+</div>
+</div>
+<!-- Circular Visual & Special Card -->
+<div class="relative w-full max-w-sm flex justify-center">
+<!-- Circular Dish Image -->
+<div class="w-72 h-72 rounded-full overflow-hidden border-8 border-surface-container shadow-2xl animate-spin-slow">
+<img alt="Signature Butter Chicken" class="w-full h-full object-cover" data-alt="A top-down view of a steaming, vibrant orange-red Butter Chicken dish garnished with a swirl of fresh white cream and bright green coriander leaves. The dish sits in a circular copper bowl with a rustic finish, placed on a warm cream-colored textured surface. The lighting is soft and golden, emphasizing the rich, creamy texture of the sauce and the organic shape of the succulent chicken pieces, conveying a premium fine-dining Indian aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDj6TDPommdv6DdsezHCiF4321jFn-MHhSsTTajWk8vgI3J38LGQXjh5UMjbL-epitcyzRnGfcFcBybWwnbwxs5qWQzfppltUA6HEt7KVnXcOou1c4qKHtg58y5AGzRb_0xBIUcnGA736ud1ZohFzGzsKof6o9a8R3a7P02sTilxEL9F8QLk8-RrDyDcuzlD68keum1nBFamyMeGdBrXOQeOUWrxzqvqztKTXK1cbme81jx42AxXz7MlZdHjZBuRP_xUj8a2gRO6XA"/>
+</div>
+<!-- Chef's Special Card (Overlay) -->
+<div class="absolute -bottom-4 right-4 bg-surface ambient-shadow rounded-xl p-4 max-w-[160px] animate-bounce-subtle">
+<div class="flex items-center gap-1 mb-1">
+<span class="material-symbols-outlined text-secondary text-[16px]" data-icon="restaurant">restaurant</span>
+<span class="font-label-sm text-label-sm text-secondary">CHEF'S SPECIAL</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface leading-tight">Murgh Makhani Classic</p>
+<p class="font-body-md text-label-sm text-on-surface-variant mt-1">₹549</p>
+</div>
+</div>
+</main>
+<!-- Footer Space Holder -->
+<footer class="bg-surface-container-highest mt-stack-lg py-stack-lg px-margin-mobile">
+<div class="flex flex-col items-center gap-stack-md">
+<div class="font-headline-md text-headline-md text-primary">Spice Palace</div>
+<div class="flex gap-4">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Privacy Policy</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Terms of Service</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-70">© 2024 Spice Palace. All rights reserved.</p>
+</div>
+</footer>
+<style>
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 60s linear infinite;
+        }
+        @keyframes bounce-subtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-bounce-subtle {
+            animation: bounce-subtle 4s ease-in-out infinite;
+        }
+    </style>
+<script>
+        // Simple micro-interaction for the CTA buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('touchstart', function() {
+                this.style.opacity = '0.9';
+            });
+            button.addEventListener('touchend', function() {
+                this.style.opacity = '1';
+            });
+        });
+    </script>
+</body></html>

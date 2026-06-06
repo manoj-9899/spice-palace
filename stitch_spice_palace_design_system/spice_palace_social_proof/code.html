@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#99b9a9",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f6f3f2",
+                    "on-primary-fixed": "#022016",
+                    "surface": "#fcf9f8",
+                    "on-tertiary-fixed-variant": "#584400",
+                    "outline": "#727974",
+                    "surface-container-highest": "#e5e2e1",
+                    "tertiary-container": "#d0a61f",
+                    "error": "#ba1a1a",
+                    "inverse-primary": "#adcebe",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#304d40",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#dcd9d9",
+                    "secondary": "#914c00",
+                    "inverse-surface": "#313030",
+                    "secondary-fixed-dim": "#ffb77e",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed-dim": "#eec13c",
+                    "secondary-fixed": "#ffdcc3",
+                    "primary-fixed-dim": "#adcebe",
+                    "on-tertiary-container": "#503d00",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-container": "#663400",
+                    "on-background": "#1b1b1b",
+                    "primary-fixed": "#c9ead9",
+                    "on-secondary-fixed-variant": "#6e3900",
+                    "tertiary": "#755b00",
+                    "on-secondary": "#ffffff",
+                    "on-surface": "#1b1b1b",
+                    "on-secondary-fixed": "#2f1500",
+                    "surface-container": "#f0eded",
+                    "on-tertiary-fixed": "#241a00",
+                    "inverse-on-surface": "#f3f0ef",
+                    "surface-tint": "#476558",
+                    "tertiary-fixed": "#ffe08f",
+                    "primary-container": "#2d4a3e",
+                    "surface-bright": "#fcf9f8",
+                    "primary": "#163328",
+                    "secondary-container": "#fe932d",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#e5e2e1",
+                    "surface-container-high": "#eae7e7",
+                    "on-surface-variant": "#424844",
+                    "outline-variant": "#c1c8c3",
+                    "background": "#fcf9f8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1200px",
+                    "unit": "8px",
+                    "margin-desktop": "48px",
+                    "section-gap": "80px",
+                    "margin-mobile": "16px",
+                    "stack-md": "16px",
+                    "stack-sm": "8px",
+                    "stack-lg": "32px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Playfair Display"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "body-md": ["DM Sans"],
+                    "label-sm": ["DM Sans"],
+                    "body-lg": ["DM Sans"],
+                    "label-md": ["DM Sans"],
+                    "display-lg": ["Playfair Display"],
+                    "headline-lg": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #FAF7F0;
+            color: #1b1b1b;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-layer {
+            background-color: #F5EFE0;
+        }
+        .ambient-shadow {
+            box-shadow: 0px 10px 30px rgba(45, 74, 62, 0.08);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md antialiased overflow-x-hidden">
+<!-- Top Navigation Bar (Shared Component) -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-surface shadow-sm h-20 px-margin-mobile flex justify-between items-center">
+<div class="font-headline-md text-headline-md text-primary">Spice Palace</div>
+<button class="bg-primary text-on-primary font-label-md px-6 py-2 rounded-full active:scale-95 transition-transform duration-150">
+            Order Online
+        </button>
+</nav>
+<main class="pt-24 pb-32 px-margin-mobile max-w-container-max mx-auto space-y-stack-lg">
+<!-- Header Banner -->
+<header class="text-center py-stack-md bg-primary-container rounded-xl p-6 text-on-primary-container space-y-stack-sm ambient-shadow">
+<div class="flex justify-center gap-1 text-tertiary-fixed">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star_half</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-white">4.9/5 Average Rating</h1>
+<p class="font-label-md text-on-primary-container opacity-90">Based on 2,000+ reviews across platforms</p>
+</header>
+<!-- Ratings Grid -->
+<section class="grid grid-cols-2 gap-gutter">
+<!-- Google -->
+<div class="tonal-layer rounded-xl p-stack-md flex flex-col items-center justify-center text-center ambient-shadow">
+<div class="w-10 h-10 mb-stack-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-4xl">google</span>
+</div>
+<div class="font-display-lg-mobile text-headline-lg text-primary">4.9</div>
+<div class="font-label-sm text-on-surface-variant uppercase tracking-wider">Google</div>
+</div>
+<!-- TripAdvisor -->
+<div class="tonal-layer rounded-xl p-stack-md flex flex-col items-center justify-center text-center ambient-shadow">
+<div class="w-10 h-10 mb-stack-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-4xl">travel_explore</span>
+</div>
+<div class="font-display-lg-mobile text-headline-lg text-primary">5.0</div>
+<div class="font-label-sm text-on-surface-variant uppercase tracking-wider">TripAdvisor</div>
+</div>
+<!-- Zomato -->
+<div class="tonal-layer rounded-xl p-stack-md flex flex-col items-center justify-center text-center ambient-shadow">
+<div class="w-10 h-10 mb-stack-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-4xl">restaurant</span>
+</div>
+<div class="font-display-lg-mobile text-headline-lg text-primary">4.8</div>
+<div class="font-label-sm text-on-surface-variant uppercase tracking-wider">Zomato</div>
+</div>
+<!-- Swiggy -->
+<div class="tonal-layer rounded-xl p-stack-md flex flex-col items-center justify-center text-center ambient-shadow">
+<div class="w-10 h-10 mb-stack-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-4xl">delivery_dining</span>
+</div>
+<div class="font-display-lg-mobile text-headline-lg text-primary">4.7</div>
+<div class="font-label-sm text-on-surface-variant uppercase tracking-wider">Swiggy</div>
+</div>
+</section>
+<!-- Testimonial Highlight -->
+<section class="tonal-layer rounded-xl overflow-hidden ambient-shadow">
+<div class="relative h-48 w-full overflow-hidden">
+<img alt="Happy Guest" class="w-full h-full object-cover" data-alt="A portrait of a smiling Indian man in a high-end, softly lit restaurant setting. He is enjoying a meal, with a beautifully presented plate of Dal Makhani in the foreground. The lighting is warm and cinematic, emphasizing a luxurious and cozy atmosphere with fine linen and elegant tableware. The background is softly blurred, focusing on the genuine expression of satisfaction." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm7_nuiSSon4KjsS2G1hfXfrRNlJxCx704kkOHw5mimiAD8fX7uVhre6ZU326NVLPgAMQRU3nXXDHUlJ5KqRvwkZnvMQwmWcxlJ6c6LHdHRUYcNOxQdri5NXFjOhtVKF4TslSgmimrLT75SBlylYa45mrPPbPXasbHkN3gOHDPQdO7NDdp3meslXX3yrSb-fO7IWzwIf51jZth3sTXOzH0YbRonFeVsVa5vWIqGs7qNtA6nMZ2WoYRlccVfOOt8PkmLYPwkv71nBE"/>
+<div class="absolute bottom-4 left-4 flex items-center bg-white/90 backdrop-blur px-3 py-1 rounded-full gap-1">
+<span class="material-symbols-outlined text-primary text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-sm text-primary">Verified Gourmet</span>
+</div>
+</div>
+<div class="p-6 space-y-stack-md">
+<div class="text-secondary flex gap-0.5">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<blockquote class="font-headline-md text-headline-md text-primary italic">
+                    "The best Dal Makhani in Pune, hands down! The service is as warm as the food."
+                </blockquote>
+<p class="font-label-md text-on-surface font-bold">— Rohan M.</p>
+</div>
+</section>
+<!-- Review Stats Bar -->
+<section class="space-y-stack-sm">
+<h3 class="font-label-md text-on-surface-variant uppercase tracking-widest px-1">Community Sentiment</h3>
+<div class="tonal-layer p-4 rounded-xl space-y-4">
+<div class="space-y-1">
+<div class="flex justify-between font-label-sm text-primary">
+<span>Authenticity</span>
+<span>98%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[98%]"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between font-label-sm text-primary">
+<span>Hospitality</span>
+<span>96%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[96%]"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between font-label-sm text-primary">
+<span>Ambiance</span>
+<span>94%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[94%]"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Sticky Bottom Bar -->
+<footer class="fixed bottom-0 left-0 right-0 bg-surface shadow-[0px_-4px_20px_rgba(45,74,62,0.1)] p-4 z-50 flex gap-4 items-center">
+<div class="flex-1">
+<div class="font-label-sm text-on-surface-variant">Next Available Table</div>
+<div class="font-label-md text-primary font-bold">Today, 7:30 PM</div>
+</div>
+<button class="bg-primary text-on-primary font-label-md px-8 py-4 rounded-full active:scale-95 transition-transform duration-150 flex items-center gap-2 shadow-lg">
+            Book Table
+            <span class="material-symbols-outlined text-[20px]">calendar_today</span>
+</button>
+</footer>
+<!-- Secondary Footer Information (Visible on Scroll) -->
+<div class="bg-surface-container-highest py-stack-lg px-margin-mobile text-center pb-40">
+<div class="font-headline-md text-headline-md text-primary mb-stack-sm">Spice Palace</div>
+<p class="font-body-md text-on-surface-variant max-w-xs mx-auto mb-stack-lg">Experience the finest North Indian culinary heritage in the heart of Pune.</p>
+<div class="flex justify-center gap-6 text-on-surface-variant">
+<span class="material-symbols-outlined">share</span>
+<span class="material-symbols-outlined">location_on</span>
+<span class="material-symbols-outlined">call</span>
+</div>
+<p class="font-label-sm text-on-surface-variant mt-stack-lg opacity-70">© 2024 Spice Palace. All rights reserved.</p>
+</div>
+</body></html>

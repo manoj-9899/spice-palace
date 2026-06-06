@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Spice Palace - Reservations</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#99b9a9",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f6f3f2",
+                    "on-primary-fixed": "#022016",
+                    "surface": "#fcf9f8",
+                    "on-tertiary-fixed-variant": "#584400",
+                    "outline": "#727974",
+                    "surface-container-highest": "#e5e2e1",
+                    "tertiary-container": "#d0a61f",
+                    "error": "#ba1a1a",
+                    "inverse-primary": "#adcebe",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#304d40",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#dcd9d9",
+                    "secondary": "#914c00",
+                    "inverse-surface": "#313030",
+                    "secondary-fixed-dim": "#ffb77e",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed-dim": "#eec13c",
+                    "secondary-fixed": "#ffdcc3",
+                    "primary-fixed-dim": "#adcebe",
+                    "on-tertiary-container": "#503d00",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-container": "#663400",
+                    "on-background": "#1b1b1b",
+                    "primary-fixed": "#c9ead9",
+                    "on-secondary-fixed-variant": "#6e3900",
+                    "tertiary": "#755b00",
+                    "on-secondary": "#ffffff",
+                    "on-surface": "#1b1b1b",
+                    "on-secondary-fixed": "#2f1500",
+                    "surface-container": "#f0eded",
+                    "on-tertiary-fixed": "#241a00",
+                    "inverse-on-surface": "#f3f0ef",
+                    "surface-tint": "#476558",
+                    "tertiary-fixed": "#ffe08f",
+                    "primary-container": "#2d4a3e",
+                    "surface-bright": "#fcf9f8",
+                    "primary": "#163328",
+                    "secondary-container": "#fe932d",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#e5e2e1",
+                    "surface-container-high": "#eae7e7",
+                    "on-surface-variant": "#424844",
+                    "outline-variant": "#c1c8c3",
+                    "background": "#fcf9f8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1200px",
+                    "unit": "8px",
+                    "margin-desktop": "48px",
+                    "section-gap": "80px",
+                    "margin-mobile": "16px",
+                    "stack-md": "16px",
+                    "stack-sm": "8px",
+                    "stack-lg": "32px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Playfair Display"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "body-md": ["DM Sans"],
+                    "label-sm": ["DM Sans"],
+                    "body-lg": ["DM Sans"],
+                    "label-md": ["DM Sans"],
+                    "display-lg": ["Playfair Display"],
+                    "headline-lg": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #FAF7F0;
+            color: #1b1b1b;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .custom-shadow {
+            shadow: 0px 10px 30px rgba(45, 74, 62, 0.08);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md antialiased pb-24">
+<!-- Top Navigation Bar (Shared Component Anchor) -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface shadow-sm h-20 transition-all duration-300 overflow-hidden">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto h-full">
+<h1 class="font-headline-md text-headline-md text-primary select-none">Spice Palace</h1>
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Menu</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">About</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Our Chef</a>
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="#">Contact</a>
+</nav>
+<button class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full font-label-md text-label-md active:scale-95 transition-transform duration-150">
+                Order Online
+            </button>
+</div>
+</header>
+<main class="mt-20 px-margin-mobile pt-10">
+<!-- Hero Section -->
+<section class="flex flex-col gap-stack-lg mb-12">
+<div class="flex flex-col gap-stack-sm">
+<h2 class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight">
+                    Reserve Your Table Today
+                </h2>
+<p class="text-on-surface-variant font-body-md opacity-80">
+                    Experience the finest North Indian culinary traditions in the heart of Pune.
+                </p>
+</div>
+<!-- Urgency Pills -->
+<div class="flex flex-wrap gap-2">
+<div class="flex items-center gap-1 bg-secondary-fixed px-4 py-2 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[18px]" style="font-variation-settings: 'FILL' 1;">timer</span>
+<span class="text-on-secondary-fixed font-label-sm text-label-sm">Limited evening slots</span>
+</div>
+<div class="flex items-center gap-1 bg-tertiary-fixed px-4 py-2 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-tertiary text-[18px]" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+<span class="text-on-tertiary-fixed font-label-sm text-label-sm">Same-day catering</span>
+</div>
+<div class="flex items-center gap-1 bg-primary-fixed px-4 py-2 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-on-primary-fixed-variant text-[18px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="text-on-primary-fixed-variant font-label-sm text-label-sm">Response in 15 min</span>
+</div>
+</div>
+</section>
+<!-- Main Interaction Cards -->
+<section class="grid grid-cols-1 gap-stack-md mb-12">
+<!-- Reservation Form Mock/Button -->
+<div class="bg-white rounded-xl p-6 shadow-[0px_10px_30px_rgba(45,74,62,0.06)] border border-surface-container">
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-white">
+<span class="material-symbols-outlined">event_seat</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-primary">Table Booking</p>
+<p class="text-label-sm text-on-surface-variant">Recommended for dinner</p>
+</div>
+</div>
+<button class="w-full bg-primary-container text-white h-[56px] rounded-full font-label-md text-label-md flex items-center justify-center gap-2 active:scale-95 transition-all shadow-lg shadow-primary/20">
+                        Book a Table
+                        <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Secondary Contact Options -->
+<div class="grid grid-cols-1 gap-stack-md">
+<!-- WhatsApp -->
+<button class="w-full h-[56px] rounded-full border-2 border-[#25D366] text-[#128C7E] font-label-md text-label-md flex items-center justify-center gap-3 active:bg-[#25D366]/5 transition-colors">
+<span class="material-symbols-outlined text-[24px]">chat</span>
+                    Message on WhatsApp
+                </button>
+<!-- Call -->
+<button class="w-full h-[56px] rounded-full border-2 border-tertiary text-tertiary font-label-md text-label-md flex items-center justify-center gap-3 active:bg-tertiary/5 transition-colors">
+<span class="material-symbols-outlined text-[24px]">call</span>
+                    Call Us
+                </button>
+</div>
+</section>
+<!-- Location Section -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-stack-md">
+<h3 class="font-headline-md text-headline-md text-primary">Our Location</h3>
+<span class="text-label-sm text-tertiary border-b border-tertiary">Get Directions</span>
+</div>
+<div class="relative w-full h-[220px] rounded-xl overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover grayscale-[0.2] contrast-[1.1]" data-alt="A stylized minimalist map of Pune city rendered in a warm cream and forest green color scheme. The map highlights key landmarks with golden saffron icons, maintaining a premium and tactile aesthetic. Soft lighting and a clean, uncluttered layout evoke a sense of heritage and modern navigation, perfectly matching the Spice Palace brand identity." data-location="Pune, India" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpfQJv6Ne7N9ne-VSyg07R0D7Ijpfqynd5PW-zpbubUwwhugwkZmflJ0BN0too96xcGToy6iHbzm9yLSP9hR2h0ShYrV1Sl5sRC5fRpiYMCuWPmUWNEOE_QbG-bcdEM96hOrKuwRK5FF6R8DL4UukH-fS14w_0AkWKnqU54GE-WTN_YSEbP1ADVLM9ppacir8Ke0l3TyTk29AQwOnASfICKs55ehE67LXcGq5KPMugVZqWI08EOIhRhjyi88iaQPI47-VMvOwE_hg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-4 rounded-lg flex items-start gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<div>
+<p class="font-label-md text-label-md text-primary">Koregaon Park, Pune</p>
+<p class="text-[12px] text-on-surface-variant">Plot 12, Lane 7, Maharashtra 411001</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Atmospheric Image -->
+<section class="mb-12 rounded-xl overflow-hidden h-48 relative">
+<img class="w-full h-full object-cover" data-alt="A close-up, top-down view of a beautifully set North Indian fine dining table at Spice Palace. The scene features warm ambient lighting reflecting off polished copper bowls and fine ivory-colored ceramics. Fresh aromatic spices like star anise and cardamom are artistically scattered around a steaming dish of saffron-infused biryani, creating an inviting and premium culinary atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtmD5_ZoQQcxuniJuAqp_7VVvPIzjts94sq8FQHaN3Hovb4mZI6lPhWPqthoj9mw45C0ddfQHlujnsywsFDhzIcjMUEe8YPEhDP7HeDza7fFqtYn6u16Ii8-15xfsSVpS2JXLH5DsdhS_XexyH91oi6Qq6LAtbP6WxkencB77WoOjRMyTRWLMIUc5SWj_jFINUOnkqqExqVt1ci56p1l9LzCloqOFh8-x55Ojkc0iVVkKxEoGu9sSrVbxVLOekj-SWLDGI3qTNvqY"/>
+<div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+<p class="text-white font-headline-md text-center px-10 italic">"Taste the legacy of spices."</p>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component Anchor) -->
+<footer class="bg-surface-container-highest py-stack-lg px-margin-mobile">
+<div class="max-w-container-max mx-auto flex flex-col gap-stack-lg">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-stack-md">
+<h2 class="font-headline-md text-headline-md text-primary">Spice Palace</h2>
+<div class="flex flex-wrap gap-x-6 gap-y-2">
+<a class="text-label-sm text-on-surface-variant hover:text-secondary transition-colors opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="text-label-sm text-on-surface-variant hover:text-secondary transition-colors opacity-80 hover:opacity-100" href="#">Terms of Service</a>
+<a class="text-label-sm text-on-surface-variant hover:text-secondary transition-colors opacity-80 hover:opacity-100" href="#">Sustainability</a>
+<a class="text-label-sm text-on-surface-variant hover:text-secondary transition-colors opacity-80 hover:opacity-100" href="#">Careers</a>
+</div>
+</div>
+<p class="text-label-sm text-on-surface-variant opacity-60">© 2024 Spice Palace. All rights reserved.</p>
+</div>
+</footer>
+<!-- Sticky Bottom Bar -->
+<div class="fixed bottom-0 left-0 right-0 z-[60] bg-white/90 backdrop-blur-xl border-t border-surface-container h-20 px-margin-mobile flex items-center justify-between gap-4 md:hidden">
+<div class="flex flex-col">
+<span class="text-label-sm text-tertiary">Quick Reservation</span>
+<span class="font-label-md text-primary">Mon - Sun: 12PM - 11PM</span>
+</div>
+<button class="bg-primary-container text-white px-8 py-3 rounded-full font-label-md shadow-lg active:scale-95 transition-transform">
+            Book Now
+        </button>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.querySelector('header');
+            let lastScroll = 0;
+
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+                if (currentScroll > 50) {
+                    header.classList.add('h-16', 'bg-white/95', 'backdrop-blur-md');
+                    header.classList.remove('h-20', 'bg-surface');
+                } else {
+                    header.classList.remove('h-16', 'bg-white/95', 'backdrop-blur-md');
+                    header.classList.add('h-20', 'bg-surface');
+                }
+                lastScroll = currentScroll;
+            });
+
+            // Ripple effect for buttons
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    let x = e.clientX - e.target.offsetLeft;
+                    let y = e.clientY - e.target.offsetTop;
+                    let ripples = document.createElement('span');
+                    ripples.style.left = x + 'px';
+                    ripples.style.top = y + 'px';
+                    this.appendChild(ripples);
+                    setTimeout(() => ripples.remove(), 1000);
+                });
+            });
+        });
+    </script>
+</body></html>
