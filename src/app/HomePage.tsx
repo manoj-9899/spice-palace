@@ -332,7 +332,7 @@ export default function HomePage() {
               </button>
             ))}
           </div>
-          <SwipeCarousel className="sp-menu-grid sp-menu-grid-enhanced" role="tabpanel">
+          <SwipeCarousel key={activeTab} className="sp-menu-grid sp-menu-grid-enhanced" role="tabpanel">
             {visibleItems.map((item, i) => (
               <ScrollReveal key={item.id} delay={(i % 3) * 60}>
                 <article className="sp-menu-card sp-menu-card-enhanced">
