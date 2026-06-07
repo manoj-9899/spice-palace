@@ -6,73 +6,92 @@ type SwipeCarouselProps = HTMLAttributes<HTMLDivElement> & {
   children: ReactNode;
 };
 
+type TouchState = {
+  startX: number;
+  startY: number;
+  scrollLeftStart: number;
+  axis: "x" | "y" | null;
+};
+
 /**
  * Mobile carousel: vertical swipes scroll the page; horizontal swipes scroll cards.
- * Uses manual scroll because overflow-x containers capture touch on iOS/Android.
+ * Native overflow-x scroll steals vertical gestures on iOS/Android, so we handle
+ * both axes manually with touch-action: none (see .sp-swipe-carousel in mobile.css).
  */
 export function SwipeCarousel({ children, className, ...props }: SwipeCarouselProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const touch = useRef<TouchState>({
+    startX: 0,
+    startY: 0,
+    scrollLeftStart: 0,
+    axis: null,
+  });
+  const lastY = useRef(0);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
 
-    let startX = 0;
-    let startY = 0;
-    let lastX = 0;
-    let lastY = 0;
-    let axis: "x" | "y" | null = null;
-
     const reset = () => {
-      axis = null;
-    };
-
-    const onTouchStart = (e: TouchEvent) => {
-      const touch = e.touches[0];
-      startX = touch.clientX;
-      startY = touch.clientY;
-      lastX = touch.clientX;
-      lastY = touch.clientY;
-      axis = null;
+      touch.current.axis = null;
+      document.removeEventListener("touchmove", onTouchMove, true);
+      document.removeEventListener("touchend", onTouchEnd, true);
+      document.removeEventListener("touchcancel", onTouchEnd, true);
     };
 
     const onTouchMove = (e: TouchEvent) => {
-      const touch = e.touches[0];
-      const dx = touch.clientX - startX;
-      const dy = touch.clientY - startY;
+      const t = e.touches[0];
+      if (!t) return;
 
-      if (!axis) {
-        if (Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
-        axis = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+      const s = touch.current;
+      const dx = t.clientX - s.startX;
+      const dy = t.clientY - s.startY;
+
+      if (!s.axis) {
+        if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+        s.axis = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
       }
 
-      if (axis === "y") {
+      if (s.axis === "y") {
         e.preventDefault();
-        window.scrollBy(0, lastY - touch.clientY);
-        lastY = touch.clientY;
+        window.scrollBy(0, lastY.current - t.clientY);
+        lastY.current = t.clientY;
         return;
       }
 
       e.preventDefault();
-      el.scrollLeft += lastX - touch.clientX;
-      lastX = touch.clientX;
+      el.scrollLeft = s.scrollLeftStart + (s.startX - t.clientX);
     };
 
-    el.addEventListener("touchstart", onTouchStart, { passive: true });
-    el.addEventListener("touchmove", onTouchMove, { passive: false });
-    el.addEventListener("touchend", reset, { passive: true });
-    el.addEventListener("touchcancel", reset, { passive: true });
+    const onTouchEnd = () => reset();
+
+    const onTouchStart = (e: TouchEvent) => {
+      const t = e.touches[0];
+      if (!t) return;
+
+      touch.current = {
+        startX: t.clientX,
+        startY: t.clientY,
+        scrollLeftStart: el.scrollLeft,
+        axis: null,
+      };
+      lastY.current = t.clientY;
+
+      document.addEventListener("touchmove", onTouchMove, { passive: false, capture: true });
+      document.addEventListener("touchend", onTouchEnd, { capture: true });
+      document.addEventListener("touchcancel", onTouchEnd, { capture: true });
+    };
+
+    el.addEventListener("touchstart", onTouchStart, { passive: true, capture: true });
 
     return () => {
-      el.removeEventListener("touchstart", onTouchStart);
-      el.removeEventListener("touchmove", onTouchMove);
-      el.removeEventListener("touchend", reset);
-      el.removeEventListener("touchcancel", reset);
+      el.removeEventListener("touchstart", onTouchStart, true);
+      reset();
     };
   }, []);
 
   return (
-    <div ref={ref} className={className} {...props}>
+    <div ref={ref} className={`sp-swipe-carousel ${className ?? ""}`.trim()} {...props}>
       {children}
     </div>
   );

@@ -372,15 +372,16 @@
   }
 
   /* ── Dish & menu carousels (mobile swipe) ── */
+  .sp-swipe-carousel.sp-dishes-grid,
+  .sp-swipe-carousel.sp-menu-grid,
   .sp-dishes-grid,
   .sp-menu-grid {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: visible;
     scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
     scroll-padding-inline: 16px;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -394,14 +395,18 @@
     padding-bottom: 8px;
     box-sizing: border-box;
     overscroll-behavior-x: contain;
-    touch-action: manipulation;
   }
 
-  .sp-dishes-grid > .sp-reveal,
-  .sp-menu-grid > .sp-reveal,
-  .sp-dishes-grid > .sp-reveal > .sp-dish-card,
-  .sp-menu-grid > .sp-reveal > .sp-menu-card {
-    touch-action: inherit;
+  /* JS handles touch — stops the browser from hijacking vertical scroll */
+  .sp-swipe-carousel {
+    touch-action: none;
+    -webkit-overflow-scrolling: auto;
+  }
+
+  .sp-swipe-carousel .sp-dish-card,
+  .sp-swipe-carousel .sp-menu-card,
+  .sp-swipe-carousel .sp-reveal {
+    touch-action: none;
   }
 
   .sp-dishes-grid::-webkit-scrollbar,
