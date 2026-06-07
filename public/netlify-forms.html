@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><title>Netlify Forms</title></head>
+  <body>
+    <!-- Netlify detects forms at deploy time; fields must match the live newsletter form -->
+    <form name="newsletter" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="bot-field" />
+      <input type="email" name="email" />
+      <input type="hidden" name="form-name" value="newsletter" />
+    </form>
+  </body>
+</html>

@@ -1442,6 +1442,13 @@ body {
   margin-top: 12px;
 }
 
+.sp-newsletter-error {
+  font-size: 13px;
+  color: #ffb4a2;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
 /* FOOTER */
 .sp-footer {
   background: #111810;

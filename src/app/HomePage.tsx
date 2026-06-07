@@ -23,6 +23,7 @@ import { Avatar } from "@/components/ui/Avatar";
 import { ChefPhoto } from "@/components/ui/ChefPhoto";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Counter } from "@/components/ui/Counter";
+import { SwipeCarousel } from "@/components/ui/SwipeCarousel";
 
 function TestimonialReview({ quote }: { quote: string }) {
   const [expanded, setExpanded] = useState(false);
@@ -52,6 +53,8 @@ export default function HomePage() {
   const [testimonialIdx, setTestimonialIdx] = useState(0);
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [newsletterDone, setNewsletterDone] = useState(false);
+  const [newsletterSubmitting, setNewsletterSubmitting] = useState(false);
+  const [newsletterError, setNewsletterError] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
 
   const visibleItems = menuByCategory[activeTab];
@@ -69,6 +72,38 @@ export default function HomePage() {
     setCart((p) => ({ ...p, [id]: (p[id] ?? 0) + qty }));
     setCartToast(name);
     setTimeout(() => setCartToast(null), 2500);
+  };
+
+  const submitNewsletter = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const email = newsletterEmail.trim();
+    if (!email || newsletterSubmitting) return;
+
+    setNewsletterSubmitting(true);
+    setNewsletterError(false);
+
+    try {
+      const body = new URLSearchParams({
+        "form-name": "newsletter",
+        email,
+        "bot-field": "",
+      });
+
+      const res = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
+      });
+
+      if (!res.ok) throw new Error("Subscribe failed");
+
+      setNewsletterDone(true);
+      setNewsletterEmail("");
+    } catch {
+      setNewsletterError(true);
+    } finally {
+      setNewsletterSubmitting(false);
+    }
   };
 
   const buildOrderMessage = useCallback(() => {
@@ -203,7 +238,7 @@ export default function HomePage() {
               <a href="#menu" className="sp-view-all">See Full Menu →</a>
             </div>
           </ScrollReveal>
-          <div className="sp-dishes-grid sp-dishes-grid-enhanced">
+          <SwipeCarousel className="sp-dishes-grid sp-dishes-grid-enhanced">
             {featuredDishes.map((dish, i) => (
               <ScrollReveal key={dish.id} delay={i * 80}>
                 <article className="sp-dish-card sp-dish-card-enhanced">
@@ -234,7 +269,7 @@ export default function HomePage() {
                 </article>
               </ScrollReveal>
             ))}
-          </div>
+          </SwipeCarousel>
         </section>
 
         {/* CHEF */}
@@ -296,7 +331,7 @@ export default function HomePage() {
               </button>
             ))}
           </div>
-          <div className="sp-menu-grid sp-menu-grid-enhanced" role="tabpanel">
+          <SwipeCarousel className="sp-menu-grid sp-menu-grid-enhanced" role="tabpanel">
             {visibleItems.map((item, i) => (
               <ScrollReveal key={item.id} delay={(i % 3) * 60}>
                 <article className="sp-menu-card sp-menu-card-enhanced">
@@ -332,7 +367,7 @@ export default function HomePage() {
                 </article>
               </ScrollReveal>
             ))}
-          </div>
+          </SwipeCarousel>
         </section>
 
         {/* SOCIAL PROOF */}
@@ -489,12 +524,48 @@ export default function HomePage() {
           </div>
           <div>
             {newsletterDone ? (
-              <p className="sp-newsletter-done" role="status">You&apos;re subscribed! Check your inbox for a welcome offer from Spice Palace.</p>
+              <p className="sp-newsletter-done" role="status">
+                Thanks for subscribing! We&apos;ll send exclusive offers and new menu updates to your email.
+              </p>
             ) : (
-              <form className="sp-newsletter-form" onSubmit={(e) => { e.preventDefault(); if (newsletterEmail.trim()) setNewsletterDone(true); }}>
+              <form
+                name="newsletter"
+                method="POST"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+                className="sp-newsletter-form"
+                onSubmit={submitNewsletter}
+              >
+                <input type="hidden" name="form-name" value="newsletter" />
+                <p hidden>
+                  <label>
+                    Don&apos;t fill this out:
+                    <input name="bot-field" tabIndex={-1} autoComplete="off" />
+                  </label>
+                </p>
                 <label htmlFor="newsletter-email" className="sp-sr-only">Email address</label>
-                <input id="newsletter-email" className="sp-newsletter-input" type="email" required placeholder="Enter your email address" value={newsletterEmail} onChange={(e) => setNewsletterEmail(e.target.value)} />
-                <button type="submit" className="sp-newsletter-btn">Subscribe →</button>
+                <input
+                  id="newsletter-email"
+                  name="email"
+                  className="sp-newsletter-input"
+                  type="email"
+                  required
+                  placeholder="Enter your email address"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  disabled={newsletterSubmitting}
+                />
+                <button type="submit" className="sp-newsletter-btn" disabled={newsletterSubmitting}>
+                  {newsletterSubmitting ? "Subscribing…" : "Subscribe →"}
+                </button>
+                {newsletterError && (
+                  <p className="sp-newsletter-error" role="alert">
+                    Something went wrong. Please try again or message us on WhatsApp.
+                  </p>
+                )}
+                <p className="sp-newsletter-note">
+                  We&apos;ll email you offers and menu updates. You can unsubscribe anytime.
+                </p>
               </form>
             )}
           </div>

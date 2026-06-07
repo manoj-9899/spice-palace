@@ -4,7 +4,7 @@
   /* Fluid spacing scale — smooth across 320px–768px */
   :root {
     --m-pad-x: clamp(16px, 4.5vw, 24px);
-    --m-pad-y: clamp(48px, 10vw, 64px);
+    --m-pad-y: clamp(36px, 8vw, 52px);
     --m-gap: clamp(12px, 3vw, 20px);
     --m-card-pad: clamp(16px, 4vw, 22px);
     --m-radius: clamp(14px, 3vw, 20px);
@@ -37,7 +37,7 @@
   }
 
   .sp-features-strip {
-    padding: clamp(32px, 8vw, 48px) var(--m-pad-x);
+    padding: clamp(24px, 6vw, 36px) var(--m-pad-x);
     gap: var(--m-gap);
   }
 
@@ -50,11 +50,19 @@
   }
 
   .sp-footer {
-    padding: clamp(40px, 9vw, 56px) var(--m-pad-x) calc(clamp(40px, 9vw, 56px) + env(safe-area-inset-bottom));
+    padding: clamp(28px, 7vw, 40px) var(--m-pad-x) calc(clamp(72px, 18vw, 84px) + env(safe-area-inset-bottom));
+  }
+
+  .sp-footer-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: unset;
+    padding: 4px 0;
+    line-height: 1.45;
   }
 
   .sp-section-header {
-    margin-bottom: clamp(24px, 6vw, 36px);
+    margin-bottom: clamp(18px, 4.5vw, 28px);
   }
 
   .sp-hero-eyebrow {
@@ -190,25 +198,17 @@
     padding: 10px 16px;
   }
 
-  .sp-footer-links a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    padding: 4px 0;
-  }
-
-  /* ── Hero: 100svh, centered copy, full-width primary CTA ── */
+  /* ── Hero: compact mobile layout (no forced full viewport) ── */
   .sp-hero {
-    min-height: 100svh;
-    min-height: 100dvh;
+    min-height: auto;
     position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: stretch;
     grid-template-columns: 1fr;
-    padding: calc(clamp(56px, 14vw, 64px) + env(safe-area-inset-top) + clamp(12px, 3vw, 20px)) var(--m-pad-x) clamp(20px, 5vw, 28px);
+    padding: calc(clamp(56px, 14vw, 64px) + env(safe-area-inset-top) + clamp(12px, 3vw, 16px)) var(--m-pad-x) clamp(24px, 6vw, 32px);
     text-align: center;
   }
 
@@ -217,8 +217,8 @@
     z-index: 2;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    flex: 1;
+    justify-content: flex-start;
+    flex: none;
     max-width: 36rem;
     margin: 0 auto;
     width: 100%;
@@ -378,7 +378,7 @@
     flex-direction: row;
     flex-wrap: nowrap;
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: visible;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scroll-padding-inline: 16px;
@@ -395,7 +395,14 @@
     padding-bottom: 8px;
     box-sizing: border-box;
     overscroll-behavior-x: contain;
-    touch-action: pan-x;
+    overscroll-behavior-y: auto;
+  }
+
+  .sp-dishes-grid > .sp-reveal,
+  .sp-menu-grid > .sp-reveal,
+  .sp-dishes-grid > .sp-reveal > .sp-dish-card,
+  .sp-menu-grid > .sp-reveal > .sp-menu-card {
+    touch-action: auto;
   }
 
   .sp-dishes-grid::-webkit-scrollbar,
@@ -701,7 +708,45 @@
   }
 
   .sp-footer-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(16px, 4vw, 24px);
+    margin-bottom: clamp(16px, 4vw, 24px);
+  }
+
+  .sp-footer-grid > div:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .sp-footer-logo {
+    margin-bottom: clamp(6px, 1.5vw, 10px);
+    font-size: clamp(1.25rem, 5vw, 1.5rem);
+  }
+
+  .sp-footer-desc {
+    margin-bottom: clamp(8px, 2vw, 12px);
+    line-height: 1.5;
+    font-size: clamp(13px, 3.4vw, 14px);
+  }
+
+  .sp-footer-heading {
+    margin-bottom: clamp(6px, 1.5vw, 10px);
+    font-size: clamp(12px, 3vw, 13px);
+    letter-spacing: 0.8px;
+  }
+
+  .sp-footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2px, 0.6vw, 4px);
+  }
+
+  .sp-footer-links li {
+    margin-bottom: 0;
+  }
+
+  .sp-footer-bottom {
+    padding-top: clamp(14px, 3.5vw, 18px);
+    font-size: clamp(12px, 3vw, 13px);
   }
 
   /* ── Blog modal ── */
