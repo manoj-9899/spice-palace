@@ -144,6 +144,23 @@
     font-size: 22px;
   }
 
+  .sp-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+    margin-right: 8px;
+  }
+
+  .sp-nav-actions .sp-nav-cta {
+    display: none;
+  }
+
+  .sp-cart-nav-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
   .sp-mobile-nav {
     top: clamp(56px, 14vw, 64px);
     padding: 12px var(--m-pad-x);
@@ -360,25 +377,11 @@
     max-width: none;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: clamp(24px, 6vw, 32px);
   }
 
   .sp-hero-actions {
-    flex-direction: column;
-    width: 100%;
-    gap: clamp(10px, 2.5vw, 12px);
-    margin-bottom: clamp(20px, 5vw, 28px);
-  }
-
-  .sp-hero-actions a {
-    width: 100%;
-    max-width: 100%;
-    text-align: center;
-    min-height: clamp(48px, 12vw, 52px);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: clamp(12px, 3vw, 14px) clamp(20px, 5vw, 24px);
-    font-size: clamp(14px, 3.6vw, 15px);
+    display: none;
   }
 
   .sp-trust-row {
@@ -783,18 +786,25 @@
 
   /* ── Contact ── */
   .sp-urgency-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: clamp(8px, 2vw, 10px);
     margin: clamp(16px, 4vw, 24px) 0 clamp(24px, 6vw, 32px);
+    width: 100%;
+    max-width: 100%;
   }
 
   .sp-urgency-list li {
-    font-size: clamp(11px, 2.9vw, 12px);
-    padding: clamp(8px, 2vw, 10px) clamp(10px, 2.5vw, 12px);
-    justify-content: center;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    font-size: clamp(13px, 3.4vw, 14px);
+    padding: clamp(10px, 2.5vw, 12px) clamp(14px, 3.5vw, 16px);
+    text-align: left;
+    line-height: 1.45;
     min-width: 0;
+    box-sizing: border-box;
   }
 
   .sp-contact .sp-reveal {

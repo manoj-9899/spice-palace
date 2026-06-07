@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import {
   RESTAURANT,
   WHATSAPP,
@@ -25,6 +25,9 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Counter } from "@/components/ui/Counter";
 import { SwipeCarousel } from "@/components/ui/SwipeCarousel";
 import { InstallPWABanner, InstallPWAFooterItem, InstallPWALink, PwaInstallProvider } from "@/components/ui/InstallPWA";
+import { CartProvider, useCart } from "@/components/cart/CartProvider";
+import { CartDrawer } from "@/components/cart/CartDrawer";
+import { CartNavButton } from "@/components/cart/CartNavButton";
 
 function TestimonialReview({ quote }: { quote: string }) {
   const [expanded, setExpanded] = useState(false);
@@ -45,10 +48,19 @@ function TestimonialReview({ quote }: { quote: string }) {
 }
 
 export default function HomePage() {
+  return (
+    <PwaInstallProvider>
+      <CartProvider>
+        <HomePageContent />
+      </CartProvider>
+    </PwaInstallProvider>
+  );
+}
+
+function HomePageContent() {
+  const { cart, addToCart, updateCartQty, orderUrl, itemCount, openDrawer } = useCart();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<MenuCategory>("curries");
-  const [quantities, setQuantities] = useState<Record<string, number>>({});
-  const [cart, setCart] = useState<Record<string, number>>({});
   const [cartToast, setCartToast] = useState<string | null>(null);
   const [activeBlogId, setActiveBlogId] = useState<string | null>(null);
   const [testimonialIdx, setTestimonialIdx] = useState(0);
@@ -62,15 +74,14 @@ export default function HomePage() {
   const activeBlog = blogPosts.find((p) => p.id === activeBlogId);
   const tabCounts = menuTabs.map((t) => ({ ...t, count: menuByCategory[t.id].length }));
 
-  const getQty = (id: string) => quantities[id] ?? 1;
+  const getQty = (id: string) => cart[id] ?? 0;
 
   const updateQty = (id: string, delta: number) => {
-    setQuantities((p) => ({ ...p, [id]: Math.max(1, (p[id] ?? 1) + delta) }));
+    updateCartQty(id, delta);
   };
 
-  const addToCart = (id: string, name: string) => {
-    const qty = getQty(id);
-    setCart((p) => ({ ...p, [id]: (p[id] ?? 0) + qty }));
+  const handleAddToCart = (id: string, name: string) => {
+    if (getQty(id) === 0) addToCart(id, 1);
     setCartToast(name);
     setTimeout(() => setCartToast(null), 2500);
   };
@@ -106,22 +117,6 @@ export default function HomePage() {
     }
   };
 
-  const buildOrderMessage = useCallback(() => {
-    const lines = Object.entries(cart).map(([id, qty]) => {
-      const item = Object.values(menuByCategory).flat().find((i) => i.id === id);
-      return item ? `${qty}x ${item.name} — ${formatPrice(item.price * qty)}` : "";
-    }).filter(Boolean);
-    const total = Object.entries(cart).reduce((sum, [id, qty]) => {
-      const item = Object.values(menuByCategory).flat().find((i) => i.id === id);
-      return sum + (item ? item.price * qty : 0);
-    }, 0);
-    return lines.join("\n") + (total ? `\n\nEstimated total: ${formatPrice(total)}` : "");
-  }, [cart]);
-
-  const orderOnlineUrl = cart && Object.keys(cart).length > 0
-    ? `https://wa.me/${RESTAURANT.whatsapp}?text=${encodeURIComponent(`Hi Spice Palace, I'd like to order:\n${buildOrderMessage()}`)}`
-    : WHATSAPP.bulk;
-
   useEffect(() => {
     const t = setInterval(() => setTestimonialIdx((i) => (i + 1) % testimonials.length), 5000);
     return () => clearInterval(t);
@@ -141,7 +136,6 @@ export default function HomePage() {
   const t = testimonials[testimonialIdx];
 
   return (
-    <PwaInstallProvider>
     <>
       {cartToast && (
         <div className="sp-toast" role="status" aria-live="polite">
@@ -164,9 +158,12 @@ export default function HomePage() {
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
-        <a href={orderOnlineUrl} target="_blank" rel="noopener noreferrer" className="sp-nav-cta sp-nav-order">
-          Order Online
-        </a>
+        <div className="sp-nav-actions">
+          <CartNavButton />
+          <a href={orderUrl} target="_blank" rel="noopener noreferrer" className="sp-nav-cta sp-nav-order">
+            Order Online
+          </a>
+        </div>
         <button type="button" className="sp-menu-btn" onClick={() => setMobileOpen(!mobileOpen)} aria-expanded={mobileOpen} aria-label="Toggle menu">
           ☰
         </button>
@@ -179,7 +176,10 @@ export default function HomePage() {
         <a href="#chef" onClick={() => setMobileOpen(false)}>Our Chef</a>
         <a href="#contact" onClick={() => setMobileOpen(false)}>Contact</a>
         <InstallPWALink onNavigate={() => setMobileOpen(false)} className="sp-mobile-nav-install" />
-        <a href={orderOnlineUrl} target="_blank" rel="noopener noreferrer" className="sp-nav-cta sp-nav-order">Order Online</a>
+        <button type="button" className="sp-mobile-nav-cart" onClick={() => { openDrawer(); setMobileOpen(false); }}>
+          View Cart{itemCount > 0 ? ` (${itemCount})` : ""}
+        </button>
+        <a href={orderUrl} target="_blank" rel="noopener noreferrer" className="sp-nav-cta sp-nav-order">Order Online</a>
       </div>
 
       <main id="main-content">
@@ -190,7 +190,7 @@ export default function HomePage() {
             <h1 id="hero-heading">Authentic Indian Cuisine Crafted Fresh Every Day</h1>
             <p>Experience traditional flavors prepared by expert chefs using premium ingredients and time-honored recipes.</p>
             <div className="sp-hero-actions">
-              <a href={orderOnlineUrl} target="_blank" rel="noopener noreferrer" className="sp-btn-primary">Order Online</a>
+              <a href={orderUrl} target="_blank" rel="noopener noreferrer" className="sp-btn-primary">Order Online</a>
               <a href="#menu" className="sp-btn-outline">View Menu</a>
               <a href={WHATSAPP.table} target="_blank" rel="noopener noreferrer" className="sp-btn-whatsapp">Book a Table</a>
             </div>
@@ -270,7 +270,9 @@ export default function HomePage() {
                   <p className="sp-dish-desc">{dish.desc}</p>
                   <div className="sp-dish-footer">
                     <div className="sp-dish-price">{formatPrice(dish.price)}</div>
-                    <a href={orderOnlineUrl} target="_blank" rel="noopener noreferrer" className="sp-dish-order-btn">Order Now</a>
+                    <button type="button" className="sp-dish-order-btn" onClick={() => handleAddToCart(dish.id, dish.name)}>
+                      Add to Cart
+                    </button>
                   </div>
                 </article>
               </ScrollReveal>
@@ -362,13 +364,25 @@ export default function HomePage() {
                   <div className="sp-menu-footer">
                     <span className="sp-menu-price">{formatPrice(item.price)}</span>
                     <div className="sp-qty-control" aria-label={`Quantity for ${item.name}`}>
-                      <button type="button" className="sp-qty-btn" onClick={() => updateQty(item.id, -1)} aria-label="Decrease quantity">−</button>
+                      <button
+                        type="button"
+                        className="sp-qty-btn"
+                        onClick={() => updateQty(item.id, -1)}
+                        disabled={getQty(item.id) === 0}
+                        aria-label="Decrease quantity"
+                      >
+                        −
+                      </button>
                       <span className="sp-qty-num">{getQty(item.id)}</span>
                       <button type="button" className="sp-qty-btn" onClick={() => updateQty(item.id, 1)} aria-label="Increase quantity">+</button>
                     </div>
                   </div>
-                  <button type="button" className="sp-add-cart-btn" onClick={() => addToCart(item.id, item.name)}>
-                    Add to Cart
+                  <button
+                    type="button"
+                    className={`sp-add-cart-btn${getQty(item.id) > 0 ? " is-in-cart" : ""}`}
+                    onClick={() => handleAddToCart(item.id, item.name)}
+                  >
+                    {getQty(item.id) > 0 ? "Added to Cart" : "Add to Cart"}
                   </button>
                 </article>
               </ScrollReveal>
@@ -513,8 +527,8 @@ export default function HomePage() {
               <h3>Order Online</h3>
               <p>Delivery, takeaway & bulk party orders — message us your cart.</p>
               <div className="sp-contact-actions">
-                <a href={orderOnlineUrl} target="_blank" rel="noopener noreferrer" className="sp-btn-whatsapp sp-contact-btn">WhatsApp Order</a>
-                <a href={orderOnlineUrl} target="_blank" rel="noopener noreferrer" className="sp-btn-primary sp-contact-btn">Order Online</a>
+                <a href={orderUrl} target="_blank" rel="noopener noreferrer" className="sp-btn-whatsapp sp-contact-btn">WhatsApp Order</a>
+                <a href={orderUrl} target="_blank" rel="noopener noreferrer" className="sp-btn-primary sp-contact-btn">Order Online</a>
               </div>
             </div>
           </div>
@@ -625,12 +639,19 @@ export default function HomePage() {
 
       {/* MOBILE STICKY BAR */}
       <div className="sp-mobile-bar" role="navigation" aria-label="Quick actions">
-        <a href={orderOnlineUrl} target="_blank" rel="noopener noreferrer" className="sp-mobile-bar-btn sp-mobile-order">Order Now</a>
+        {itemCount > 0 ? (
+          <button type="button" className="sp-mobile-bar-btn sp-mobile-order" onClick={openDrawer}>
+            View Cart ({itemCount})
+          </button>
+        ) : (
+          <a href={orderUrl} target="_blank" rel="noopener noreferrer" className="sp-mobile-bar-btn sp-mobile-order">Order Now</a>
+        )}
         <a href={WHATSAPP.table} target="_blank" rel="noopener noreferrer" className="sp-mobile-bar-btn sp-mobile-book">Book a Table</a>
       </div>
 
+      <CartDrawer />
+
       <a href={WHATSAPP.table} target="_blank" rel="noopener noreferrer" className="sp-float-wa sp-float-wa-desktop" aria-label="Chat on WhatsApp">💬</a>
     </>
-    </PwaInstallProvider>
   );
 }
