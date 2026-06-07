@@ -76,6 +76,7 @@ export default function HomePage() {
 
   const submitNewsletter = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
     const email = newsletterEmail.trim();
     if (!email || newsletterSubmitting) return;
 
@@ -83,11 +84,9 @@ export default function HomePage() {
     setNewsletterError(false);
 
     try {
-      const body = new URLSearchParams({
-        "form-name": "newsletter",
-        email,
-        "bot-field": "",
-      });
+      const data = new FormData(form);
+      const body = new URLSearchParams();
+      data.forEach((value, key) => body.append(key, value.toString()));
 
       const res = await fetch("/", {
         method: "POST",
@@ -95,7 +94,7 @@ export default function HomePage() {
         body: body.toString(),
       });
 
-      if (!res.ok) throw new Error("Subscribe failed");
+      if (!res.ok && res.status !== 302) throw new Error("Subscribe failed");
 
       setNewsletterDone(true);
       setNewsletterEmail("");
@@ -150,7 +149,9 @@ export default function HomePage() {
 
       <header className="sp-nav" role="banner">
         <Link href="#" className="sp-logo" aria-label={`${RESTAURANT.name} home`}>
-          <div className="sp-logo-icon" aria-hidden="true">🌿</div>
+          <div className="sp-logo-icon" aria-hidden="true">
+            <Image src="/icons/icon-192.png" alt="" width={38} height={38} className="sp-logo-img" priority />
+          </div>
           <span className="sp-logo-text">Spice<span>Palace</span></span>
         </Link>
         <nav aria-label="Main navigation">

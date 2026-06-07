@@ -58,6 +58,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+        <link rel="icon" href="/icons/icon-192.png" sizes="192x192" type="image/png" />
+        <link rel="icon" href="/icons/icon-512.png" sizes="512x512" type="image/png" />
         <link
           href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap"
           rel="stylesheet"
@@ -66,6 +68,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body>
+        <form name="newsletter" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+          <input type="text" name="bot-field" />
+          <input type="email" name="email" />
+          <input type="hidden" name="form-name" value="newsletter" />
+        </form>
         <a href="#main-content" className="sp-skip-link">
           Skip to main content
         </a>

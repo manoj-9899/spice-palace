@@ -6,7 +6,10 @@ type SwipeCarouselProps = HTMLAttributes<HTMLDivElement> & {
   children: ReactNode;
 };
 
-/** Lets vertical page scroll win over horizontal carousel when the user swipes up/down on a card. */
+/**
+ * Mobile carousel: vertical swipes scroll the page; horizontal swipes scroll cards.
+ * Uses manual scroll because overflow-x containers capture touch on iOS/Android.
+ */
 export function SwipeCarousel({ children, className, ...props }: SwipeCarouselProps) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -16,20 +19,21 @@ export function SwipeCarousel({ children, className, ...props }: SwipeCarouselPr
 
     let startX = 0;
     let startY = 0;
+    let lastX = 0;
+    let lastY = 0;
     let axis: "x" | "y" | null = null;
 
     const reset = () => {
       axis = null;
-      el.style.overflowX = "";
-      el.style.touchAction = "";
     };
 
     const onTouchStart = (e: TouchEvent) => {
-      startX = e.touches[0].clientX;
-      startY = e.touches[0].clientY;
+      const touch = e.touches[0];
+      startX = touch.clientX;
+      startY = touch.clientY;
+      lastX = touch.clientX;
+      lastY = touch.clientY;
       axis = null;
-      el.style.overflowX = "";
-      el.style.touchAction = "";
     };
 
     const onTouchMove = (e: TouchEvent) => {
@@ -43,17 +47,19 @@ export function SwipeCarousel({ children, className, ...props }: SwipeCarouselPr
       }
 
       if (axis === "y") {
-        el.style.overflowX = "hidden";
-        el.style.touchAction = "pan-y";
+        e.preventDefault();
+        window.scrollBy(0, lastY - touch.clientY);
+        lastY = touch.clientY;
         return;
       }
 
-      el.style.overflowX = "auto";
-      el.style.touchAction = "pan-x";
+      e.preventDefault();
+      el.scrollLeft += lastX - touch.clientX;
+      lastX = touch.clientX;
     };
 
     el.addEventListener("touchstart", onTouchStart, { passive: true });
-    el.addEventListener("touchmove", onTouchMove, { passive: true });
+    el.addEventListener("touchmove", onTouchMove, { passive: false });
     el.addEventListener("touchend", reset, { passive: true });
     el.addEventListener("touchcancel", reset, { passive: true });
 
