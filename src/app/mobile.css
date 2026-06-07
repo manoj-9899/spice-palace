@@ -157,6 +157,98 @@
     font-size: 15px;
   }
 
+  .sp-mobile-nav-install {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 10px 0;
+    font-size: 15px;
+    color: var(--forest);
+    font-weight: 500;
+    width: 100%;
+    text-align: left;
+  }
+
+  /* ── PWA install banner (below navbar) ── */
+  .sp-install-banner {
+    display: block;
+    position: fixed;
+    top: clamp(56px, 14vw, 64px);
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background: var(--forest);
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  .sp-install-banner-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px var(--m-pad-x);
+  }
+
+  .sp-install-banner-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .sp-install-banner-text strong {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .sp-install-banner-text span {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .sp-install-banner-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .sp-install-btn {
+    background: var(--saffron);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    min-height: 36px;
+    white-space: nowrap;
+  }
+
+  .sp-install-dismiss {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+    cursor: pointer;
+    min-width: 36px;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  body:has(.sp-install-banner) .sp-hero {
+    padding-top: calc(clamp(56px, 14vw, 64px) + env(safe-area-inset-top) + clamp(12px, 3vw, 16px) + 52px);
+  }
+
+  body:has(.sp-install-banner) .sp-mobile-nav {
+    top: calc(clamp(56px, 14vw, 64px) + 52px);
+  }
+
   /* ── Tap targets ── */
   .sp-btn-primary,
   .sp-btn-outline,

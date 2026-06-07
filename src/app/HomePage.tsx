@@ -24,6 +24,7 @@ import { ChefPhoto } from "@/components/ui/ChefPhoto";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { Counter } from "@/components/ui/Counter";
 import { SwipeCarousel } from "@/components/ui/SwipeCarousel";
+import { InstallPWABanner, InstallPWAFooterItem, InstallPWALink, PwaInstallProvider } from "@/components/ui/InstallPWA";
 
 function TestimonialReview({ quote }: { quote: string }) {
   const [expanded, setExpanded] = useState(false);
@@ -140,6 +141,7 @@ export default function HomePage() {
   const t = testimonials[testimonialIdx];
 
   return (
+    <PwaInstallProvider>
     <>
       {cartToast && (
         <div className="sp-toast" role="status" aria-live="polite">
@@ -170,10 +172,13 @@ export default function HomePage() {
         </button>
       </header>
 
+      <InstallPWABanner />
+
       <div className={`sp-mobile-nav ${mobileOpen ? "open" : ""}`} role="dialog" aria-hidden={!mobileOpen}>
         <a href="#menu" onClick={() => setMobileOpen(false)}>Menu</a>
         <a href="#chef" onClick={() => setMobileOpen(false)}>Our Chef</a>
         <a href="#contact" onClick={() => setMobileOpen(false)}>Contact</a>
+        <InstallPWALink onNavigate={() => setMobileOpen(false)} className="sp-mobile-nav-install" />
         <a href={orderOnlineUrl} target="_blank" rel="noopener noreferrer" className="sp-nav-cta sp-nav-order">Order Online</a>
       </div>
 
@@ -603,6 +608,7 @@ export default function HomePage() {
               <li><a href="#menu">Menu</a></li>
               <li><a href="#contact">Order & Contact</a></li>
               <li><a href="#newsletter">Newsletter</a></li>
+              <InstallPWAFooterItem />
             </ul>
           </div>
           <div>
@@ -625,5 +631,6 @@ export default function HomePage() {
 
       <a href={WHATSAPP.table} target="_blank" rel="noopener noreferrer" className="sp-float-wa sp-float-wa-desktop" aria-label="Chat on WhatsApp">💬</a>
     </>
+    </PwaInstallProvider>
   );
 }
